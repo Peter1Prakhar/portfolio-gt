@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { AlignJustify } from 'lucide-react';
-import { motion } from 'framer-motion';
-import MobileMenu from './MobileMenu';
+import { AlignJustify, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import SearchModal from '../common/SearchModal';
+import { navLinks } from '../../client/src/lib/utils';
+import { useLanguage } from '../../client/src/contexts/LanguageContext';
 
 interface HeaderProps {
   currentSection: number;
@@ -12,8 +13,10 @@ interface HeaderProps {
 
 export default function Header({ currentSection, onNavClick }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const { language, setLanguage, t } = useLanguage();
 
   // Handle scroll event to change navbar background
   useEffect(() => {
@@ -31,11 +34,27 @@ export default function Header({ currentSection, onNavClick }: HeaderProps) {
     };
   }, []);
 
-  // Add keyboard shortcut for opening sidebar with Escape key
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen]);
+
+  // Handle keyboard accessibility
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setSidebarOpen(prevState => !prevState);
+      if (e.key === 'Escape' && menuOpen) {
+        setMenuOpen(false);
       }
     };
 
@@ -43,7 +62,7 @@ export default function Header({ currentSection, onNavClick }: HeaderProps) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [menuOpen]);
 
   return (
     <>
@@ -61,28 +80,87 @@ export default function Header({ currentSection, onNavClick }: HeaderProps) {
           </Link>
           
           {/* Hamburger Menu Button (three lines) */}
-          <div>
+          <div ref={menuRef} className="relative">
             <button 
               className="text-white flex items-center justify-center hover:opacity-80 transition-opacity"
-              onClick={() => setSidebarOpen(true)}
-              aria-label="Open menu"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
             >
-              <AlignJustify size={28} />
+              {menuOpen ? <X size={28} /> : <AlignJustify size={28} />}
             </button>
+            
+            {/* Dropdown Menu */}
+            <AnimatePresence>
+              {menuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-12 right-0 w-64 bg-muted p-4 rounded shadow-lg z-50"
+                >
+                  {/* Language Switcher */}
+                  <div className="flex space-x-4 items-center mb-4 pb-2 border-b border-gray-700">
+                    <button 
+                      onClick={() => setLanguage('en')}
+                      className={`text-sm font-semibold ${language === 'en' ? 'text-accent' : 'text-text-secondary hover:text-white'}`}
+                    >
+                      EN
+                    </button>
+                    <span className="text-text-secondary">|</span>
+                    <button 
+                      onClick={() => setLanguage('fr')}
+                      className={`text-sm font-semibold ${language === 'fr' ? 'text-accent' : 'text-text-secondary hover:text-white'}`}
+                    >
+                      FR
+                    </button>
+                    <span className="text-text-secondary">|</span>
+                    <button 
+                      onClick={() => setLanguage('de')}
+                      className={`text-sm font-semibold ${language === 'de' ? 'text-accent' : 'text-text-secondary hover:text-white'}`}
+                    >
+                      DE
+                    </button>
+                  </div>
+                  
+                  {/* Navigation Links */}
+                  <nav className="flex flex-col space-y-2">
+                    {navLinks.map((link, index) => (
+                      <a
+                        key={index}
+                        href={link.path}
+                        className={`py-2 px-3 rounded transition-colors duration-200 flex items-center ${
+                          currentSection === index 
+                            ? 'text-accent bg-gray-800'
+                            : 'text-white hover:bg-gray-800'
+                        }`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          onNavClick(index);
+                          setMenuOpen(false);
+                        }}
+                      >
+                        {currentSection === index && (
+                          <span className="text-accent mr-2">•</span>
+                        )}
+                        {language === 'en' ? link.name : t(link.key)}
+                      </a>
+                    ))}
+                  </nav>
+                  
+                  {/* Social Icons */}
+                  <div className="mt-4 pt-2 border-t border-gray-700 flex justify-between">
+                    <div className="text-xs text-white/60">
+                      © 2020 COPYRIGHT
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </motion.header>
-
-      {/* Sidebar Navigation */}
-      <MobileMenu 
-        isOpen={sidebarOpen} 
-        onClose={() => setSidebarOpen(false)}
-        currentSection={currentSection}
-        onNavClick={(index) => {
-          onNavClick(index);
-          setSidebarOpen(false);
-        }}
-      />
 
       {/* Search Modal */}
       <SearchModal
