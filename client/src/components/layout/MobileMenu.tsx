@@ -1,6 +1,7 @@
 import { navLinks } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Facebook, Twitter, Instagram } from 'lucide-react';
+import { useEffect } from 'react';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -10,6 +11,22 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick }: MobileMenuProps) {
+  // Disable body scroll when sidebar is open
+  useEffect(() => {
+    if (isOpen) {
+      // Disable scrolling on the main page when sidebar is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Re-enable scrolling when sidebar is closed
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Cleanup effect
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+  
   // Temporary language state (in a real app, this would use the context)
   const language = 'en';
   
