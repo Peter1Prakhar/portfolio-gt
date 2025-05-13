@@ -6,14 +6,14 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const navLinks = [
-  { name: 'HOME', path: '#home' },
-  { name: 'ABOUT', path: '#about' },
-  { name: 'PROJECTS', path: '#projects' },
-  { name: 'EDUCATION', path: '#education' },
-  { name: 'TESTIMONIALS', path: '#testimonials' },
-  { name: 'PARTNERS', path: '#partners' },
-  { name: 'BLOG', path: '#blog' },
-  { name: 'CONTACT', path: '#contact' },
+  { name: 'HOME', path: '#home', key: 'home' },
+  { name: 'ABOUT', path: '#about', key: 'about' },
+  { name: 'PROJECTS', path: '#projects', key: 'projects' },
+  { name: 'EDUCATION', path: '#education', key: 'education' },
+  { name: 'TESTIMONIALS', path: '#testimonials', key: 'testimonials' },
+  { name: 'PARTNERS', path: '#partners', key: 'partners' },
+  { name: 'BLOG', path: '#blog', key: 'blog' },
+  { name: 'CONTACT', path: '#contact', key: 'contact' },
 ];
 
 export const projects = [
