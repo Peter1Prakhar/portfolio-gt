@@ -31,6 +31,20 @@ export default function Header({ currentSection, onNavClick }: HeaderProps) {
     };
   }, []);
 
+  // Add keyboard shortcut for opening sidebar with Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSidebarOpen(prevState => !prevState);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
     <>
       <motion.header
@@ -46,7 +60,7 @@ export default function Header({ currentSection, onNavClick }: HeaderProps) {
             Gilber<span className="text-accent">.</span>
           </Link>
           
-          {/* Hamburger Menu Button - Right aligned */}
+          {/* Menu Button - Always visible on all screen sizes */}
           <div>
             <button 
               className="text-white flex items-center justify-center hover:opacity-80 transition-opacity"
@@ -58,6 +72,18 @@ export default function Header({ currentSection, onNavClick }: HeaderProps) {
           </div>
         </div>
       </motion.header>
+
+      {/* Fixed Button for Desktop - Bottom right corner */}
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="fixed bottom-8 right-8 z-40 hidden md:flex items-center justify-center bg-accent text-white p-4 rounded-full hover:bg-accent/80 transition-colors shadow-lg"
+        onClick={() => setSidebarOpen(true)}
+        aria-label="Open menu"
+      >
+        <Menu size={24} />
+      </motion.button>
 
       {/* Sidebar Navigation */}
       <MobileMenu 

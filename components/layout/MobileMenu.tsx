@@ -75,7 +75,7 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
           animate="visible"
           exit="exit"
           variants={sidebarVariants}
-          className="fixed top-0 right-0 w-full h-screen bg-muted z-50 flex flex-col overflow-hidden"
+          className="fixed top-0 right-0 w-full md:w-96 h-screen bg-muted z-50 flex flex-col overflow-hidden"
         >
           {/* Top bar with logo, language switcher, close button */}
           <div className="flex justify-between items-center p-8">
