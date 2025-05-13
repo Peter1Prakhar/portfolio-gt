@@ -37,14 +37,14 @@ export default function HomeSection({ id }: HomeSectionProps) {
           >
             <div className="md:pr-10">
               <span className="text-white font-inter font-light mb-2 block">
-                Product Designer
+                Founder & CEO
               </span>
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-syne font-bold text-white leading-tight mb-8">
-                Gilber<span className="text-accent">.</span>
+                Joshua<span className="text-accent">.</span>
               </h1>
               <p className="text-text-secondary text-lg md:max-w-xl mb-10">
-                Working with client and community, we deliver impressions that creates vibrant 
-                new spaces and success, attract people, and encourage investment through.
+                Visionary entrepreneur with expertise in Product management, Business development, 
+                and Marketing. Creating world-class products at GAMERS TAG.
               </p>
               <div className="flex">
                 <motion.a 

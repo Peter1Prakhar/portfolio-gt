@@ -49,12 +49,12 @@ export default function EducationSection({ id }: EducationSectionProps) {
               >
                 <span className="absolute left-0 top-0 w-2 h-2 rounded-full bg-accent transform -translate-x-[3px]"></span>
                 <div className="bg-background p-6 rounded-sm">
-                  <span className="text-accent text-sm">2010 - 2014</span>
+                  <span className="text-accent text-sm">2018 - 2022</span>
                   <h4 className="text-white font-syne font-semibold text-xl mt-1 mb-2">
-                    Bachelor of Design
+                    B.Sc in Business Administration
                   </h4>
                   <p className="text-text-secondary">
-                    New York University, School of Design
+                    University of Cambridge, UK
                   </p>
                 </div>
               </motion.div>

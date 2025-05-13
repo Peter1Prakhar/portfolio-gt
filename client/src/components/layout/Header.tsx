@@ -43,11 +43,9 @@ export default function Header({ currentSection, onNavClick }: HeaderProps) {
         }`}
       >
         <div className="flex justify-between items-center">
-          <Link href="/">
-            <a className="text-white font-syne font-bold text-2xl">
-              Gilber<span className="text-accent">.</span>
-            </a>
-          </Link>
+          <div className="text-white font-syne font-bold text-2xl cursor-pointer" onClick={() => window.location.href = '/'}>
+            GAMERS TAG<span className="text-accent">.</span>
+          </div>
           
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
