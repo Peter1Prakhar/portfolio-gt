@@ -37,16 +37,16 @@ export default function Header({ currentSection, onNavClick }: HeaderProps) {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 w-full z-50 px-8 py-6 lg:px-16 transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full z-50 px-8 py-6 transition-all duration-300 ${
           scrolled ? 'bg-muted shadow-lg' : ''
         }`}
       >
         <div className="flex justify-between items-center">
           <Link href="/" className="text-white font-syne font-bold text-2xl">
-            GAMERS TAG<span className="text-accent">.</span>
+            Gilber<span className="text-accent">.</span>
           </Link>
           
-          {/* Hamburger Menu Button */}
+          {/* Hamburger Menu Button - Right aligned */}
           <div>
             <button 
               className="text-white flex items-center justify-center hover:opacity-80 transition-opacity"

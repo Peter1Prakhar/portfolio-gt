@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Play } from 'lucide-react';
+import { useLanguage } from '../../client/src/contexts/LanguageContext';
 
 interface HomeSectionProps {
   id: string;
@@ -7,56 +8,63 @@ interface HomeSectionProps {
 }
 
 export default function HomeSection({ id, onScrollDown }: HomeSectionProps) {
+  const { t } = useLanguage();
+
   return (
-    <section id={id} className="h-screen flex items-center relative bg-background px-8 lg:px-16">
-      <div className="container mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl"
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-syne font-bold text-white leading-tight">
-            Hello, I'm <span className="text-accent">Joshua Kanatt.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-white/80 mt-4 mb-8">
-            Founder & Chief Executive Officer - GAMERS TAG
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-accent text-black font-medium rounded-sm"
-              onClick={(e) => {
-                e.preventDefault();
-                // Would need to navigate to the contact section
-              }}
-            >
-              Get in Touch
-            </motion.a>
-            <motion.a
-              href="#portfolio"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-transparent border border-white/20 text-white font-medium rounded-sm hover:border-white/50 transition-colors"
-              onClick={(e) => {
-                e.preventDefault();
-                // Would need to navigate to the portfolio section
-              }}
-            >
-              View My Work
-            </motion.a>
+    <section id={id} className="h-screen flex flex-col justify-center relative bg-background">
+      <div className="container mx-auto relative z-10 px-8 flex flex-col h-full">
+        <div className="flex-grow flex items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full">
+            {/* Left content - text, title, play button */}
+            <div className="flex flex-col justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <p className="text-base text-white/80 mb-2">Product Designer</p>
+                
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-syne font-bold text-white leading-tight mb-3">
+                  Gilber<span className="text-accent">.</span>
+                </h1>
+                
+                <p className="text-base text-white/80 mt-2 max-w-lg">
+                  Working with client and community, we deliver masterplans that create vibrant new places and spaces, attract people, and encourage.
+                </p>
+                
+                <div className="mt-10 mb-4">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center group"
+                  >
+                    <Play className="w-6 h-6 text-white fill-white group-hover:text-accent group-hover:fill-accent transition-colors" />
+                  </motion.button>
+                </div>
+              </motion.div>
+            </div>
+            
+            {/* Right content would be empty for the image background */}
+            <div className="hidden lg:block"></div>
           </div>
+        </div>
+        
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+          className="mb-8 text-xs text-white/50"
+        >
+          © Gilber, 2020
         </motion.div>
       </div>
 
-      <div className="ken-burn-bg">
-        {/* Dark overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/50 z-0"></div>
+      <div className="absolute inset-0 z-0">
+        {/* Background image */}
+        <div className="absolute inset-0 z-[-1] bg-[url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center opacity-70"></div>
         
-        {/* Background image would go here */}
-        <div className="absolute inset-0 z-[-1] bg-[url('/images/hero-bg.jpg')] bg-cover bg-center"></div>
+        {/* Dark overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/40"></div>
       </div>
 
       <motion.button
