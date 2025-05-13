@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
-import { navLinks } from '@/lib/utils';
-import { Menu, Search, X } from 'lucide-react';
+import { AlignJustify, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import MobileMenu from './MobileMenu';
 import SearchModal from '@/components/search/SearchModal';
@@ -13,7 +12,7 @@ interface HeaderProps {
 
 export default function Header({ currentSection, onNavClick }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
   // Handle scroll event to change navbar background
@@ -38,71 +37,36 @@ export default function Header({ currentSection, onNavClick }: HeaderProps) {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 w-full z-50 px-8 py-6 lg:px-16 transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full z-50 px-8 py-6 transition-all duration-300 ${
           scrolled ? 'bg-muted shadow-lg' : ''
         }`}
       >
         <div className="flex justify-between items-center">
           <div className="text-white font-syne font-bold text-2xl cursor-pointer" onClick={() => window.location.href = '/'}>
-            GAMERS TAG<span className="text-accent">.</span>
+            Gilber<span className="text-accent">.</span>
           </div>
           
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {navLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.path}
-                className={`navbar-link ${
-                  currentSection === index
-                    ? 'text-white active'
-                    : 'text-text-secondary'
-                } hover:text-white transition-colors duration-300`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onNavClick(index);
-                }}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-          
-          <div className="flex items-center gap-4">
+          {/* Hamburger Menu Button (three lines) - Always Visible */}
+          <div>
             <button 
-              className="text-white hidden lg:flex items-center"
-              onClick={() => setSearchOpen(true)}
+              className="text-white flex items-center justify-center hover:opacity-80 transition-opacity"
+              onClick={() => setSidebarOpen(true)}
+              aria-label="Open menu"
             >
-              <Search size={20} />
+              <AlignJustify size={28} />
             </button>
-
-            <div className="hidden lg:block">
-              <a href="tel:+12130525-10" className="text-white">
-                +1 (213) 05-25-10
-              </a>
-            </div>
-
-            {/* Mobile Menu Toggle */}
-            <div className="lg:hidden">
-              <button 
-                className="text-white"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
           </div>
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
+      {/* Sidebar Navigation */}
       <MobileMenu 
-        isOpen={mobileMenuOpen} 
-        onClose={() => setMobileMenuOpen(false)}
+        isOpen={sidebarOpen} 
+        onClose={() => setSidebarOpen(false)}
         currentSection={currentSection}
         onNavClick={(index) => {
           onNavClick(index);
-          setMobileMenuOpen(false);
+          setSidebarOpen(false);
         }}
       />
 
