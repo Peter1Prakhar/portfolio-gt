@@ -1,7 +1,6 @@
 import { navLinks } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Facebook, Twitter, Instagram } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -11,8 +10,9 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick }: MobileMenuProps) {
-  const { language, setLanguage, t } = useLanguage();
-
+  // Temporary language state (in a real app, this would use the context)
+  const language = 'en';
+  
   // Animation variants
   const sidebarVariants = {
     hidden: { x: '100%' },
@@ -67,6 +67,44 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
     }
   };
 
+  // Get translated menu item names based on the selected language
+  const getMenuName = (name: string): string => {
+    const translations: Record<string, Record<string, string>> = {
+      en: {
+        home: 'Home',
+        about: 'About',
+        projects: 'Projects',
+        education: 'Education',
+        testimonials: 'Testimonials',
+        partners: 'Partners',
+        blog: 'Blog',
+        contact: 'Contact'
+      },
+      fr: {
+        home: 'Accueil',
+        about: 'À Propos',
+        projects: 'Projets',
+        education: 'Éducation',
+        testimonials: 'Témoignages',
+        partners: 'Partenaires',
+        blog: 'Blog',
+        contact: 'Contact'
+      },
+      de: {
+        home: 'Startseite',
+        about: 'Über Mich',
+        projects: 'Projekte',
+        education: 'Bildung',
+        testimonials: 'Referenzen',
+        partners: 'Partner',
+        blog: 'Blog',
+        contact: 'Kontakt'
+      }
+    };
+    
+    return translations[language][name.toLowerCase()] || name;
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -85,22 +123,13 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
             
             <div className="flex items-center space-x-4">
               <div className="flex space-x-2 items-center">
-                <button 
-                  onClick={() => setLanguage('en')}
-                  className={`text-sm ${language === 'en' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}
-                >
+                <button className={`text-sm ${language === 'en' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}>
                   EN
                 </button>
-                <button 
-                  onClick={() => setLanguage('fr')}
-                  className={`text-sm ${language === 'fr' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}
-                >
+                <button className={`text-sm ${language === 'fr' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}>
                   FR
                 </button>
-                <button 
-                  onClick={() => setLanguage('de')}
-                  className={`text-sm ${language === 'de' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}
-                >
+                <button className={`text-sm ${language === 'de' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}>
                   DE
                 </button>
               </div>
@@ -151,7 +180,7 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
                       {currentSection === index && (
                         <span className="text-[#ff0000] mr-2 text-lg">•</span>
                       )}
-                      {t(link.name.toLowerCase())}
+                      {getMenuName(link.name)}
                     </a>
                   </motion.div>
                 ))}
