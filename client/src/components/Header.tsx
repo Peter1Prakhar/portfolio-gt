@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { navItems } from "@/lib/data";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Search } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 
 interface HeaderProps {
@@ -30,52 +28,53 @@ export default function Header({ isScrolled, setIsSearchOpen }: HeaderProps) {
   return (
     <header 
       ref={headerRef}
-      className={`fixed top-0 left-0 right-0 z-50 py-6 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 ${
         isScrolled ? "bg-background bg-opacity-90 shadow-lg backdrop-blur-sm" : ""
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-xl font-poppins font-bold">
+          <div className="text-xl font-poppins font-bold ml-20 md:ml-0">
             <Link href="#">
               Gilber<span className="text-accent">.</span>
             </Link>
           </div>
           
-          <div className="flex items-center space-x-4">
-            {/* Phone Number - Always visible */}
-            <div className="hidden md:block">
-              <a 
-                href="tel:+12130625-10" 
-                className="text-white hover:text-accent transition-colors duration-300 text-sm font-medium"
-              >
-                +1 (213) 062-25-10
-              </a>
-            </div>
-            
-            {/* Search Button */}
-            <button 
-              className="p-2 text-white hover:text-accent transition-colors duration-300"
-              onClick={() => setIsSearchOpen(true)}
-              aria-label="Search"
+          {/* Hamburger Menu Toggle (Three Lines) */}
+          <button 
+            className="text-white focus:outline-none" 
+            onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Toggle Navigation"
+          >
+            <svg 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              className="transform scale-75"
             >
-              <Search className="w-5 h-5" />
-            </button>
-            
-            {/* Hamburger Menu Toggle (Three Lines) */}
-            <button 
-              className="text-white p-2 focus:outline-none" 
-              onClick={() => setIsMobileMenuOpen(true)}
-              aria-label="Toggle Navigation"
-            >
-              <div className="flex flex-col justify-center items-center space-y-1">
-                <span className="block w-6 h-0.5 bg-white"></span>
-                <span className="block w-6 h-0.5 bg-white"></span>
-                <span className="block w-6 h-0.5 bg-white"></span>
-              </div>
-            </button>
-          </div>
+              <path 
+                d="M3 6H21" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round"
+              />
+              <path 
+                d="M3 12H21" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round"
+              />
+              <path 
+                d="M3 18H21" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
         </div>
       </div>
       

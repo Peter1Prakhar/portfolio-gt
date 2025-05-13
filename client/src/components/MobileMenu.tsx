@@ -3,8 +3,7 @@ import { Link } from "wouter";
 import { navItems } from "@/lib/data";
 import { motion } from "framer-motion";
 import { 
-  X, Search, Home, User, Briefcase, GraduationCap, 
-  MessageSquare, Building, FileText, Mail, Phone 
+  X, Facebook, Twitter, Instagram
 } from "lucide-react";
 
 interface MobileMenuProps {
@@ -26,25 +25,11 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
     return () => window.removeEventListener('keydown', handleEscKey);
   }, [onClose]);
 
-  // Map of navigation items to icons
-  const navIcons = {
-    home: <Home className="w-5 h-5 mr-3" />,
-    about: <User className="w-5 h-5 mr-3" />,
-    projects: <Briefcase className="w-5 h-5 mr-3" />,
-    education: <GraduationCap className="w-5 h-5 mr-3" />,
-    testimonials: <MessageSquare className="w-5 h-5 mr-3" />,
-    partners: <Building className="w-5 h-5 mr-3" />,
-    blog: <FileText className="w-5 h-5 mr-3" />,
-    contact: <Mail className="w-5 h-5 mr-3" />
-  };
-
   const menuVariants = {
     hidden: {
-      x: "100%",
       opacity: 0,
     },
     visible: {
-      x: 0,
       opacity: 1,
       transition: {
         duration: 0.3,
@@ -52,7 +37,6 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
       },
     },
     exit: {
-      x: "100%",
       opacity: 0,
       transition: {
         duration: 0.3,
@@ -73,99 +57,95 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
     }),
   };
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <motion.div 
-      className="fixed inset-0 bg-background bg-opacity-95 flex flex-col z-50"
+      className="fixed inset-0 bg-background bg-opacity-95 flex z-50"
       initial="hidden"
       animate="visible"
       exit="exit"
       variants={menuVariants}
     >
-      <div className="flex justify-between items-center p-6 border-b border-gray-800">
-        <div className="text-xl font-poppins font-bold">
-          Gilber<span className="text-accent">.</span>
+      <div className="w-3/5 relative">
+        {/* Left content - keep the same content as the hero section */}
+        <div className="absolute left-12 top-0 bottom-0 w-[1px] bg-gray-700 opacity-50"></div>
+        
+        <div className="absolute left-12 top-1/4 h-48 flex flex-col justify-between -translate-x-1/2">
+          <a href="#" className="text-white hover:text-accent transition-colors duration-300">
+            <Facebook className="w-5 h-5" />
+          </a>
+          <a href="#" className="text-white hover:text-accent transition-colors duration-300">
+            <Twitter className="w-5 h-5" />
+          </a>
+          <a href="#" className="text-white hover:text-accent transition-colors duration-300">
+            <Instagram className="w-5 h-5" />
+          </a>
         </div>
         
-        <div className="flex items-center space-x-4">
-          <button
-            className="text-white p-2 focus:outline-none"
-            onClick={onSearchOpen}
-            aria-label="Search"
-          >
-            <Search className="w-5 h-5" />
-          </button>
-          
-          <button 
-            className="text-white p-2 focus:outline-none" 
-            onClick={onClose}
-            aria-label="Close Navigation"
-          >
-            <X className="w-6 h-6" />
-          </button>
+        <div className="ml-20 mt-12">
+          <div className="text-xl font-poppins font-bold">
+            Gilber<span className="text-accent">.</span>
+          </div>
+        </div>
+        
+        <div className="absolute bottom-10 left-20 flex items-center space-x-4 text-white/50 text-sm">
+          <a href="#" className="hover:text-white/80 transition-colors">
+            <Facebook className="w-4 h-4" />
+          </a>
+          <a href="#" className="hover:text-white/80 transition-colors">
+            <Twitter className="w-4 h-4" />
+          </a>
+          <a href="#" className="hover:text-white/80 transition-colors">
+            <Instagram className="w-4 h-4" />
+          </a>
+          <span className="text-xs ml-4">© {currentYear} COPYRIGHT.<br/>ALL RIGHTS RESERVED.</span>
         </div>
       </div>
       
-      <div className="flex-1 overflow-y-auto py-6 px-4">
-        <nav className="mb-10">
-          <ul className="space-y-4">
-            {navItems.map((item, i) => {
-              const iconKey = item.path.replace('#', '') as keyof typeof navIcons;
-              return (
-                <motion.li 
-                  key={item.id}
-                  custom={i}
-                  initial="hidden"
-                  animate="visible"
-                  variants={itemVariants}
+      <div className="w-2/5 flex flex-col bg-black py-12 px-8 relative">
+        {/* Language selector */}
+        <div className="flex justify-end space-x-6 mb-12 mr-10">
+          <a href="#" className="text-accent font-medium text-sm">EN</a>
+          <a href="#" className="text-white/70 hover:text-white font-medium text-sm">FR</a>
+          <a href="#" className="text-white/70 hover:text-white font-medium text-sm">DE</a>
+        </div>
+        
+        <button 
+          className="absolute top-12 right-8 text-white focus:outline-none" 
+          onClick={onClose}
+          aria-label="Close Navigation"
+        >
+          <X className="w-6 h-6" />
+        </button>
+        
+        {/* Right sidebar with nav items */}
+        <nav className="flex-1 pr-12">
+          <ul className="space-y-8 mt-16">
+            {navItems.map((item, i) => (
+              <motion.li 
+                key={item.id}
+                custom={i}
+                initial="hidden"
+                animate="visible"
+                variants={itemVariants}
+              >
+                <a 
+                  href={item.path} 
+                  className={`block text-2xl font-medium transition-colors duration-300 ${
+                    item.isActive ? 'text-accent border-l-4 border-accent pl-4' : 'text-white hover:text-accent'
+                  }`}
+                  onClick={onClose}
                 >
-                  <a 
-                    href={item.path} 
-                    className={`flex items-center p-3 rounded-lg hover:bg-gray-800 transition-colors duration-300 ${
-                      item.isActive ? 'text-accent' : 'text-white'
-                    }`}
-                    onClick={onClose}
-                  >
-                    {navIcons[iconKey] || <div className="w-5 h-5 mr-3" />}
-                    <span className="text-lg font-medium">{item.label}</span>
-                  </a>
-                </motion.li>
-              );
-            })}
+                  {item.label}
+                </a>
+              </motion.li>
+            ))}
           </ul>
         </nav>
         
-        <motion.div 
-          className="p-4 bg-gray-800 rounded-lg mt-auto"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ 
-            y: 0, 
-            opacity: 1,
-            transition: {
-              delay: navItems.length * 0.05 + 0.2,
-              duration: 0.5,
-            },
-          }}
-        >
-          <div className="flex items-center text-white mb-2">
-            <Phone className="w-5 h-5 mr-3 text-accent" />
-            <a 
-              href="tel:+12130625-10" 
-              className="text-white hover:text-accent transition-colors duration-300"
-            >
-              +1 (213) 062-25-10
-            </a>
-          </div>
-          
-          <div className="flex items-center text-white">
-            <Mail className="w-5 h-5 mr-3 text-accent" />
-            <a 
-              href="mailto:hello@gilber.design" 
-              className="text-white hover:text-accent transition-colors duration-300"
-            >
-              hello@gilber.design
-            </a>
-          </div>
-        </motion.div>
+        {/* Right red line */}
+        <div className="absolute right-12 top-0 bottom-0 w-[1px] bg-accent"></div>
       </div>
     </motion.div>
   );

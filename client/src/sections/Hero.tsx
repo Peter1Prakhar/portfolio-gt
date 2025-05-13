@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, Facebook, Twitter, Instagram } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = 4; // Total number of slides
+  const currentYear = new Date().getFullYear();
   
   // Auto slide rotation
   useEffect(() => {
@@ -19,17 +20,34 @@ export default function Hero() {
   const heroStyles = {
     backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&q=80')`,
     backgroundSize: 'cover',
-    backgroundPosition: 'center'
+    backgroundPosition: 'center right'
   };
   
   return (
     <section className="h-screen flex items-center relative">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 bg-cover bg-center" style={heroStyles}>
-        <div className="absolute inset-0 bg-background bg-opacity-60"></div>
+        <div className="absolute inset-0 bg-background bg-opacity-70"></div>
       </div>
       
-      <div className="container mx-auto px-4 md:px-6 z-10">
+      {/* Left Vertical Line */}
+      <div className="absolute left-12 top-0 bottom-0 w-[1px] bg-gray-700 opacity-50 z-10"></div>
+      
+      {/* Social Icons */}
+      <div className="absolute left-12 top-1/4 h-48 flex flex-col justify-between z-10 -translate-x-1/2">
+        <a href="#" className="text-white hover:text-accent transition-colors duration-300">
+          <Facebook className="w-5 h-5" />
+        </a>
+        <a href="#" className="text-white hover:text-accent transition-colors duration-300">
+          <Twitter className="w-5 h-5" />
+        </a>
+        <a href="#" className="text-white hover:text-accent transition-colors duration-300">
+          <Instagram className="w-5 h-5" />
+        </a>
+      </div>
+      
+      {/* Content */}
+      <div className="container mx-auto px-4 md:px-6 z-10 ml-20">
         <div className="max-w-3xl">
           <motion.p 
             className="text-lg text-muted mb-2"
@@ -41,7 +59,7 @@ export default function Hero() {
           </motion.p>
           
           <motion.h1 
-            className="text-5xl md:text-7xl font-poppins font-bold mb-8"
+            className="text-6xl md:text-8xl font-poppins font-bold mb-8"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -50,42 +68,39 @@ export default function Hero() {
           </motion.h1>
           
           <motion.p 
-            className="text-lg text-white/80 mb-8"
+            className="text-base text-white/70 mb-8 max-w-md"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Working with client and community, we deliver presentations that create vibrant new spaces and success, attract people, and encourage investment through.
+            Working with client and community, we deliver masterplans that create vibrant new places and spaces, attract people, and encourage.
           </motion.p>
           
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
+            className="relative"
           >
-            <button className="group relative inline-flex items-center justify-start overflow-hidden rounded-full bg-accent py-3 pl-4 pr-12 font-medium transition-all duration-300 ease-in-out hover:bg-transparent hover:pl-10 hover:pr-6">
-              <span className="absolute left-0 inset-y-0 flex items-center justify-center w-10 h-full bg-white bg-opacity-20 text-white duration-300 -translate-x-full group-hover:translate-x-0">
-                <Play className="w-4 h-4" />
-              </span>
-              <span className="relative w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-white">
-                Watch Showreel
-              </span>
+            <button className="rounded-full border border-white/30 p-6 group">
+              <Play className="w-6 h-6 text-white group-hover:text-accent transition-colors" />
             </button>
+          </motion.div>
+          
+          {/* Copyright */}
+          <motion.div
+            className="absolute bottom-10 left-20 text-xs text-white/50 z-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            © Gilber. {currentYear}
           </motion.div>
         </div>
       </div>
       
-      {/* Pagination Indicator */}
-      <div className="absolute bottom-10 right-10 z-10">
-        <div className="flex items-center space-x-2">
-          {Array.from({ length: totalSlides }).map((_, index) => (
-            <span 
-              key={index}
-              className={`w-10 h-0.5 ${index === currentSlide ? 'bg-accent' : 'bg-white opacity-50'}`}
-            ></span>
-          ))}
-        </div>
-      </div>
+      {/* Right Line */}
+      <div className="absolute right-12 top-0 bottom-0 w-[1px] bg-accent z-10"></div>
     </section>
   );
 }
