@@ -21,18 +21,18 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
   };
 
   const itemVariants = {
-    hidden: { x: 50, opacity: 0 },
+    hidden: { x: 20, opacity: 0 },
     visible: (i: number) => ({
       x: 0,
       opacity: 1,
       transition: {
-        delay: 0.3 + i * 0.1,
-        duration: 0.5,
+        delay: 0.2 + i * 0.05,
+        duration: 0.3,
         ease: 'easeOut'
       }
     }),
     exit: (i: number) => ({
-      x: 50,
+      x: 20,
       opacity: 0,
       transition: {
         duration: 0.2,
@@ -52,18 +52,18 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
     visible: { 
       opacity: 1,
       transition: { 
-        delay: 0.8,
+        delay: 0.5,
         staggerChildren: 0.1 
       }
     }
   };
 
   const socialIconVariants = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { opacity: 0, y: 5 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.3 }
+      transition: { duration: 0.2 }
     }
   };
 
@@ -75,40 +75,38 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
           animate="visible"
           exit="exit"
           variants={sidebarVariants}
-          className="fixed top-0 right-0 w-full md:w-96 h-screen bg-muted z-50 flex flex-col overflow-hidden"
+          className="fixed top-0 right-0 w-full md:w-72 h-screen bg-[#151515] z-50 flex flex-col overflow-hidden"
         >
           {/* Top bar with logo, language switcher, close button */}
-          <div className="flex justify-between items-center p-8">
+          <div className="flex justify-between items-center p-5">
             <div className="text-white font-syne font-bold text-2xl">
-              Gilber<span className="text-accent">.</span>
+              Gilber
             </div>
             
-            <div className="flex items-center space-x-6">
-              <div className="flex space-x-4 items-center">
+            <div className="flex items-center space-x-4">
+              <div className="flex space-x-2 items-center">
                 <button 
                   onClick={() => setLanguage('en')}
-                  className={`text-sm font-semibold ${language === 'en' ? 'text-accent' : 'text-text-secondary hover:text-white'}`}
+                  className={`text-sm ${language === 'en' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}
                 >
                   EN
                 </button>
-                <span className="text-text-secondary">|</span>
                 <button 
                   onClick={() => setLanguage('fr')}
-                  className={`text-sm font-semibold ${language === 'fr' ? 'text-accent' : 'text-text-secondary hover:text-white'}`}
+                  className={`text-sm ${language === 'fr' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}
                 >
                   FR
                 </button>
-                <span className="text-text-secondary">|</span>
                 <button 
                   onClick={() => setLanguage('de')}
-                  className={`text-sm font-semibold ${language === 'de' ? 'text-accent' : 'text-text-secondary hover:text-white'}`}
+                  className={`text-sm ${language === 'de' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}
                 >
                   DE
                 </button>
               </div>
               
               <motion.button 
-                className="text-white p-2"
+                className="text-white"
                 onClick={onClose}
                 variants={closeButtonVariants}
                 whileHover="hover"
@@ -120,13 +118,13 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
           </div>
           
           {/* Menu items with red accent vertical line */}
-          <div className="flex px-8 py-6">
+          <div className="flex mt-8">
             <div className="w-full relative">
               {/* Red vertical line - always visible */}
-              <div className="absolute top-0 right-0 bottom-0 w-1 bg-accent"></div>
+              <div className="absolute top-0 right-0 bottom-0 w-1 bg-[#ff0000]"></div>
               
               {/* Menu items */}
-              <div className="flex flex-col space-y-5 pr-8">
+              <div className="flex flex-col space-y-5 pr-6">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={index}
@@ -135,13 +133,14 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
                     animate="visible"
                     exit="exit"
                     variants={itemVariants}
+                    className="text-right"
                   >
                     <a
                       href={link.path}
-                      className={`text-xl font-syne py-3 flex items-center justify-end ${
+                      className={`text-base font-syne py-1 flex items-center justify-end ${
                         currentSection === index 
-                        ? 'text-accent'
-                        : 'text-white hover:text-accent'
+                        ? 'text-[#ff0000]'
+                        : 'text-white hover:text-[#ff0000]'
                       } transition-colors duration-300`}
                       onClick={(e) => {
                         e.preventDefault();
@@ -149,11 +148,10 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
                         onClose();
                       }}
                     >
-                      {link.name}
-                      
                       {currentSection === index && (
-                        <span className="text-accent ml-3 text-xl">•</span>
+                        <span className="text-[#ff0000] mr-2 text-lg">•</span>
                       )}
+                      {t(link.name.toLowerCase())}
                     </a>
                   </motion.div>
                 ))}
@@ -162,15 +160,15 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
           </div>
           
           {/* Footer with copyright and social icons */}
-          <div className="mt-auto p-8">
+          <div className="mt-auto p-5">
             <div className="flex justify-between items-center">
-              <div className="text-xs text-white/60">
-                © 2020 COPYRIGHT<br />
+              <div className="text-xs text-white/80">
+                © 2020 COPYRIGHT.<br />
                 ALL RIGHTS RESERVED.
               </div>
               
               <motion.div 
-                className="flex space-x-6"
+                className="flex space-x-4"
                 variants={socialIconsVariants}
                 initial="hidden"
                 animate="visible"
@@ -180,27 +178,27 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
                   target="_blank" 
                   rel="noopener noreferrer"
                   variants={socialIconVariants}
-                  className="text-white hover:text-accent transition-colors"
+                  className="text-white hover:text-[#ff0000] transition-colors"
                 >
-                  <Facebook size={20} />
+                  <Facebook size={18} />
                 </motion.a>
                 <motion.a 
                   href="https://twitter.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   variants={socialIconVariants}
-                  className="text-white hover:text-accent transition-colors"
+                  className="text-white hover:text-[#ff0000] transition-colors"
                 >
-                  <Twitter size={20} />
+                  <Twitter size={18} />
                 </motion.a>
                 <motion.a 
                   href="https://instagram.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   variants={socialIconVariants}
-                  className="text-white hover:text-accent transition-colors"
+                  className="text-white hover:text-[#ff0000] transition-colors"
                 >
-                  <Instagram size={20} />
+                  <Instagram size={18} />
                 </motion.a>
               </motion.div>
             </div>
