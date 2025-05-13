@@ -68,6 +68,7 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
   };
 
   // Get translated menu item names based on the selected language
+  // Format menu item names with consistent capitalization
   const getMenuName = (name: string): string => {
     const translations: Record<string, Record<string, string>> = {
       en: {
@@ -102,6 +103,7 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
       }
     };
     
+    // Get translation or use original name with first letter capitalized
     return translations[language][name.toLowerCase()] || name;
   };
 
@@ -143,13 +145,13 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
           </div>
           
           {/* Menu items with red accent vertical line */}
-          <div className="flex mt-8">
+          <div className="flex mt-8 flex-grow overflow-y-auto">
             <div className="w-full relative">
               {/* Red vertical line - always visible */}
               <div className="absolute top-0 right-0 bottom-0 w-1 bg-[#ff0000]"></div>
               
               {/* Menu items */}
-              <div className="flex flex-col space-y-5 pr-6">
+              <div className="flex flex-col space-y-8 py-4">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={index}
@@ -158,13 +160,13 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
                     animate="visible"
                     exit="exit"
                     variants={itemVariants}
-                    className="text-right"
+                    className="text-center pr-6"
                   >
                     <a
                       href={link.path}
-                      className={`text-base font-syne py-1 flex items-center justify-end ${
+                      className={`text-xl font-syne py-1 flex items-center justify-center ${
                         currentSection === index 
-                        ? 'text-[#ff0000]'
+                        ? 'text-[#ff0000] font-bold'
                         : 'text-white hover:text-[#ff0000]'
                       } transition-colors duration-300`}
                       onClick={(e) => {
@@ -174,7 +176,7 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
                       }}
                     >
                       {currentSection === index && (
-                        <span className="text-[#ff0000] mr-2 text-lg">•</span>
+                        <span className="text-[#ff0000] mr-3 text-2xl">•</span>
                       )}
                       {getMenuName(link.name)}
                     </a>
