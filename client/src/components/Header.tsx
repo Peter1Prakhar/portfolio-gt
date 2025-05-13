@@ -37,11 +37,11 @@ export default function Header({ isScrolled, setIsSearchOpen }: HeaderProps) {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="#">
-            <a className="text-xl font-poppins font-bold">
+          <div className="text-xl font-poppins font-bold">
+            <Link href="#">
               Gilber<span className="text-accent">.</span>
-            </a>
-          </Link>
+            </Link>
+          </div>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:block">
