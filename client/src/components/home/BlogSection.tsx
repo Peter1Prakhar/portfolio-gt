@@ -32,11 +32,12 @@ export default function BlogSection({ id }: BlogSectionProps) {
           </span>
           <h2 className="text-4xl md:text-5xl font-syne font-bold text-white leading-tight flex items-center justify-between">
             <span>Latest articles</span>
-            <Link href="/blog">
-              <a className="text-base font-normal text-accent hover:underline hidden md:block">
-                View all posts
-              </a>
-            </Link>
+            <div 
+              className="text-base font-normal text-accent hover:underline hidden md:block cursor-pointer"
+              onClick={() => window.location.href = '/blog'}
+            >
+              View all posts
+            </div>
           </h2>
         </motion.div>
         

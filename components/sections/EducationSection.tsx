@@ -5,6 +5,14 @@ interface EducationSectionProps {
   id: string;
 }
 
+interface Experience {
+  id: number;
+  period: string;
+  title: string;
+  company: string;
+  description: string;
+}
+
 export default function EducationSection({ id }: EducationSectionProps) {
   return (
     <section id={id} className="min-h-screen bg-muted py-24 px-8 lg:px-16">
@@ -68,12 +76,12 @@ export default function EducationSection({ id }: EducationSectionProps) {
               >
                 <span className="absolute left-0 top-0 w-2 h-2 rounded-full bg-accent transform -translate-x-[3px]"></span>
                 <div className="bg-background p-6 rounded-sm">
-                  <span className="text-accent text-sm">2008 - 2010</span>
+                  <span className="text-accent text-sm">2016 - 2017</span>
                   <h4 className="text-white font-syne font-semibold text-xl mt-1 mb-2">
-                    Associate in Arts
+                    Product Management Certification
                   </h4>
                   <p className="text-text-secondary">
-                    Manhattan Community College
+                    Stanford University
                   </p>
                 </div>
               </motion.div>

@@ -19,44 +19,44 @@ export const navLinks = [
 export const projects = [
   {
     id: 1,
-    title: "Finance App",
-    category: "UI/UX DESIGN",
-    image: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
+    title: "GAMERS TAG Platform",
+    category: "PRODUCT MANAGEMENT",
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
     link: "#"
   },
   {
     id: 2,
-    title: "CreativeHub Agency",
-    category: "WEB DESIGN",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
+    title: "E-Sports Analytics Dashboard",
+    category: "DATA ANALYTICS",
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
     link: "#"
   },
   {
     id: 3,
-    title: "Eco Products",
-    category: "BRANDING",
-    image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
+    title: "Gaming Marketplace",
+    category: "BUSINESS DEVELOPMENT",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
     link: "#"
   },
   {
     id: 4,
-    title: "Smart Home Device",
+    title: "Player Matchmaking System",
     category: "PRODUCT DESIGN",
-    image: "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
+    image: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
     link: "#"
   },
   {
     id: 5,
-    title: "Fitness Tracker",
-    category: "UX DESIGN",
-    image: "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
+    title: "Gaming Community App",
+    category: "MARKETING",
+    image: "https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
     link: "#"
   },
   {
     id: 6,
-    title: "Travel Explorer",
-    category: "WEB DESIGN",
-    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
+    title: "Game Developer Platform",
+    category: "BUSINESS STRATEGY",
+    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
     link: "#"
   }
 ];
@@ -123,26 +123,30 @@ export const blogPosts = [
 export const experiences = [
   {
     id: 1,
-    period: "2020 - PRESENT",
-    title: "Senior Product Designer - DesignWorks Inc.",
-    description: "Leading design strategy and execution for enterprise clients. Managing a team of designers and collaborating with cross-functional teams to deliver impactful digital products."
+    period: "2021 - PRESENT",
+    title: "Founder & CEO",
+    company: "GAMERS TAG",
+    description: "Founded and lead GAMERS TAG, a gaming industry startup creating innovative solutions for gamers. Oversee product strategy, business development, and company growth."
   },
   {
     id: 2,
-    period: "2016 - 2020",
-    title: "UI/UX Designer - TechVision Studio",
-    description: "Designed user interfaces and experiences for mobile and web applications. Conducted user research and usability testing to inform design decisions."
+    period: "2019 - 2021",
+    title: "Senior Product Manager",
+    company: "Tech Innovations Ltd.",
+    description: "Led product development lifecycle for enterprise SaaS solutions. Managed multiple product teams and increased product adoption by 45% through strategic improvements."
   },
   {
     id: 3,
-    period: "2013 - 2016",
-    title: "Graphic Designer - CreativeMinds Agency",
-    description: "Created visual identities, marketing materials, and digital assets for various clients. Collaborated with marketing teams to develop cohesive brand experiences."
+    period: "2017 - 2019",
+    title: "Business Development Consultant",
+    company: "Global Ventures Partners",
+    description: "Advised technology startups on business strategy, market positioning, and growth tactics. Specialized in product-market fit analysis and go-to-market strategies."
   },
   {
     id: 4,
-    period: "2009 - 2013",
-    title: "Bachelor of Design - Design Institute",
-    description: "Graduated with honors in Visual Communication Design. Specialized in digital media and interactive design."
+    period: "2015 - 2017",
+    title: "Marketing Analyst",
+    company: "DataDriven Marketing",
+    description: "Developed data-driven marketing strategies for clients in the technology sector. Specialized in analytics, customer segmentation, and performance measurement."
   }
 ];
