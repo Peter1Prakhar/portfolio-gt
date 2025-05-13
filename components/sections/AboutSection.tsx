@@ -11,10 +11,10 @@ interface Skill {
 
 export default function AboutSection({ id }: AboutSectionProps) {
   const skills: Skill[] = [
-    { name: 'UI/UX Design', percentage: 95 },
-    { name: 'Web Development', percentage: 90 },
-    { name: 'Mobile App Design', percentage: 85 },
-    { name: 'Branding Identity', percentage: 80 },
+    { name: 'Product Management', percentage: 95 },
+    { name: 'Business Development', percentage: 90 },
+    { name: 'Marketing', percentage: 88 },
+    { name: 'Data Analytics', percentage: 85 },
   ];
 
   return (
@@ -32,13 +32,13 @@ export default function AboutSection({ id }: AboutSectionProps) {
             </h2>
             <div className="text-text-secondary space-y-4">
               <p>
-                Hello, I'm Alex Gilbert, a NYC-based UI/UX designer and frontend developer with over 7 years of experience. I specialize in creating innovative digital experiences that combine aesthetic appeal with functional design.
+                I'm a visionary entrepreneur with over four years of expertise in Product management, architecture, Marketing, Data analytics, Business development & Consulting, and Startups.
               </p>
               <p>
-                My approach to design is user-centered, focusing on creating intuitive and engaging interfaces that solve real problems. I believe in the power of collaboration and enjoy working closely with clients and development teams to bring ideas to life.
+                I've designed over 100 world-class products, setting new industry standards. With a unique talent for forecasting product growth, validated by extensive customer research and market analysis, I deliver exceptional results.
               </p>
               <p>
-                When I'm not designing or coding, you can find me exploring the latest design trends, attending tech meetups, or enjoying the vibrant New York City arts scene.
+                As Founder & CEO of GAMERS TAG, I lead with innovation and strategic vision, creating solutions that make a meaningful impact in the gaming industry.
               </p>
             </div>
             <motion.div 

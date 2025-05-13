@@ -17,10 +17,10 @@ export default function HomeSection({ id, onScrollDown }: HomeSectionProps) {
           className="max-w-2xl"
         >
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-syne font-bold text-white leading-tight">
-            Hello, I'm <span className="text-accent">Alex Gilbert.</span>
+            Hello, I'm <span className="text-accent">Joshua Kanatt.</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/80 mt-4 mb-8">
-            Senior UI/UX Designer & Frontend Developer based in New York
+            Founder & Chief Executive Officer - GAMERS TAG
           </p>
           <div className="flex flex-wrap gap-4">
             <motion.a
