@@ -11,10 +11,11 @@ interface Skill {
 
 export default function AboutSection({ id }: AboutSectionProps) {
   const skills: Skill[] = [
+    { name: 'Gaming Industry Knowledge', percentage: 98 },
     { name: 'Product Management', percentage: 95 },
     { name: 'Business Development', percentage: 90 },
-    { name: 'Marketing', percentage: 88 },
-    { name: 'Data Analytics', percentage: 85 },
+    { name: 'Data Analytics', percentage: 88 },
+    { name: 'E-Sports & Community Building', percentage: 85 },
   ];
 
   return (
@@ -32,13 +33,13 @@ export default function AboutSection({ id }: AboutSectionProps) {
             </h2>
             <div className="text-text-secondary space-y-4">
               <p>
-                I'm a visionary entrepreneur with over four years of expertise in Product management, architecture, Marketing, Data analytics, Business development & Consulting, and Startups.
+                I'm a visionary gaming entrepreneur with over 7 years of expertise in the gaming industry, focusing on product management, e-sports development, and gaming community building.
               </p>
               <p>
-                I've designed over 100 world-class products, setting new industry standards. With a unique talent for forecasting product growth, validated by extensive customer research and market analysis, I deliver exceptional results.
+                I've developed innovative gaming platforms that connect players and enhance gaming experiences. With a deep understanding of player engagement mechanics and monetization strategies, I create solutions that benefit both gamers and businesses.
               </p>
               <p>
-                As Founder & CEO of GAMERS TAG, I lead with innovation and strategic vision, creating solutions that make a meaningful impact in the gaming industry.
+                As Founder & CEO of GAMERS TAG, I lead with innovation and strategic vision, creating solutions that make a meaningful impact in the gaming industry while fostering inclusive and vibrant gaming communities.
               </p>
             </div>
             <motion.div 
@@ -91,11 +92,11 @@ export default function AboutSection({ id }: AboutSectionProps) {
             <div className="grid grid-cols-2 gap-6 mt-8">
               <div className="text-center p-6 bg-muted rounded-sm">
                 <h4 className="text-3xl font-syne font-bold text-accent mb-2">7+</h4>
-                <p className="text-text-secondary">Years of Experience</p>
+                <p className="text-text-secondary">Years in Gaming Industry</p>
               </div>
               <div className="text-center p-6 bg-muted rounded-sm">
-                <h4 className="text-3xl font-syne font-bold text-accent mb-2">50+</h4>
-                <p className="text-text-secondary">Completed Projects</p>
+                <h4 className="text-3xl font-syne font-bold text-accent mb-2">25+</h4>
+                <p className="text-text-secondary">Gaming Projects</p>
               </div>
             </div>
           </motion.div>

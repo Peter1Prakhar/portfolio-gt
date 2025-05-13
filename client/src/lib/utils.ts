@@ -64,59 +64,59 @@ export const projects = [
 export const testimonials = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    position: "CEO, TechStart",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100",
-    text: "Working with Gilber was an incredible experience. His attention to detail and understanding of our brand requirements exceeded our expectations. The designs he created for our app were not only beautiful but also highly functional, resulting in a significant increase in user engagement."
+    name: "Alex Rodriguez",
+    position: "CEO, NexTech Games",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100",
+    text: "Joshua's vision for GAMERS TAG has revolutionized how we approach player engagement. His strategic insights helped us increase user retention by 40% and significantly improve monetization. His deep understanding of the gaming industry combined with business acumen makes him an invaluable partner."
   },
   {
     id: 2,
-    name: "Mark Williams",
-    position: "Product Manager, Innovate Inc.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100",
-    text: "Gilber brought a level of creativity and strategic thinking to our product redesign that was truly transformative. His ability to balance aesthetic appeal with user-centered design principles resulted in a product that not only looks amazing but also delivers an exceptional user experience."
+    name: "Priya Sharma",
+    position: "Product Director, GamersHub",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100",
+    text: "Working with Joshua transformed our product roadmap and business strategy. His data-driven approach and player-centric design philosophy helped us prioritize features that truly resonated with our audience. The analytics dashboard he developed has become essential to our decision-making process."
   },
   {
     id: 3,
-    name: "Emily Chen",
-    position: "Marketing Director, GrowFast",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100",
-    text: "We hired Gilber to redesign our brand identity and website, and the results were outstanding. His collaborative approach and willingness to understand our business goals made the process smooth and enjoyable. The new design has significantly improved our brand perception and customer engagement."
+    name: "Marcus Chen",
+    position: "Founder, E-Sports Ventures",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100",
+    text: "Joshua's expertise in the gaming industry is unmatched. As we were launching our e-sports platform, his guidance on player acquisition and community building was instrumental to our success. His innovative approach to matchmaking and tournament structures has set us apart from competitors."
   }
 ];
 
 export const partnerLogos = [
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=50",
-  "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=50",
-  "https://images.unsplash.com/photo-1563694983011-6f4d90358083?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=50",
-  "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=50",
-  "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=50"
+  "https://images.unsplash.com/photo-1624061061899-acd3a151bbec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=50",
+  "https://images.unsplash.com/photo-1640879776821-25f44457c894?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=50",
+  "https://images.unsplash.com/photo-1628654210900-196c3004497e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=50",
+  "https://images.unsplash.com/photo-1616161560702-61a3af134095?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=50",
+  "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=50"
 ];
 
 export const blogPosts = [
   {
     id: 1,
-    title: "The Future of UI Design in 2023",
-    excerpt: "Exploring the latest trends in user interface design and how they're shaping digital experiences. From neumorphism to glassmorphism, we examine what's next.",
-    category: "DESIGN TRENDS",
-    date: "June 12, 2023",
-    image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500"
+    title: "Revolutionizing Player Engagement in 2025",
+    excerpt: "How gaming companies can leverage data analytics and personalization to create meaningful player experiences that drive retention and monetization in today's competitive market.",
+    category: "GAMING BUSINESS",
+    date: "May 1, 2025",
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500"
   },
   {
     id: 2,
-    title: "Effective User Research Techniques",
-    excerpt: "A comprehensive guide to conducting user research that provides valuable insights for your design process. Learn how to ask the right questions and analyze the results.",
-    category: "UX PROCESS",
-    date: "May 28, 2023",
-    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500"
+    title: "The Future of E-Sports Economy",
+    excerpt: "Analyzing the growth trajectory of the e-sports industry and identifying key opportunities for businesses to participate in this rapidly expanding ecosystem.",
+    category: "E-SPORTS TRENDS",
+    date: "April 15, 2025",
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500"
   },
   {
     id: 3,
-    title: "Best Design Tools for Productivity",
-    excerpt: "Discover the top design tools that can streamline your workflow and boost your productivity. From prototyping to collaboration, we've got you covered.",
-    category: "TOOLS & RESOURCES",
-    date: "May 14, 2023",
-    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500"
+    title: "Building Gaming Communities That Last",
+    excerpt: "Strategies for developing vibrant, engaged gaming communities that foster player loyalty and create sustainable ecosystems for game developers and publishers.",
+    category: "COMMUNITY MANAGEMENT",
+    date: "March 28, 2025",
+    image: "https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500"
   }
 ];
 
