@@ -115,21 +115,17 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
           variants={sidebarVariants}
           className="fixed top-0 right-0 w-full md:w-72 h-screen bg-[#151515] z-50 flex flex-col overflow-hidden"
         >
-          {/* Top bar with logo, language switcher, close button */}
-          <div className="flex justify-between items-center p-5">
-            <div className="text-white font-syne font-bold text-2xl">
-              Gilber
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <div className="flex space-x-2 items-center">
-                <button className={`text-sm ${language === 'en' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}>
+          {/* Top bar with language switcher and close button */}
+          <div className="flex justify-end items-center p-4 pt-6">
+            <div className="flex items-center space-x-8">
+              <div className="flex space-x-6 items-center">
+                <button className="text-sm text-[#ff0000]">
                   EN
                 </button>
-                <button className={`text-sm ${language === 'fr' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}>
+                <button className="text-sm text-white">
                   FR
                 </button>
-                <button className={`text-sm ${language === 'de' ? 'text-[#ff0000]' : 'text-white hover:text-[#ff0000]'}`}>
+                <button className="text-sm text-white">
                   DE
                 </button>
               </div>
@@ -188,48 +184,48 @@ export default function MobileMenu({ isOpen, onClose, currentSection, onNavClick
             </div>
           </div>
           
-          {/* Footer with copyright and social icons */}
-          <div className="mt-auto p-5">
-            <div className="flex justify-between items-center">
-              <div className="text-xs text-white/80">
-                © 2020 COPYRIGHT.<br />
-                ALL RIGHTS RESERVED.
-              </div>
-              
-              <motion.div 
-                className="flex space-x-4"
-                variants={socialIconsVariants}
-                initial="hidden"
-                animate="visible"
+          {/* Footer section */}
+          <div className="mt-auto flex flex-col space-y-6 items-center p-5">
+            {/* Social icons - centered */}
+            <motion.div 
+              className="flex space-x-8 justify-center w-full"
+              variants={socialIconsVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.a 
+                href="https://facebook.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                variants={socialIconVariants}
+                className="text-white hover:text-[#ff0000] transition-colors"
               >
-                <motion.a 
-                  href="https://facebook.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  variants={socialIconVariants}
-                  className="text-white hover:text-[#ff0000] transition-colors"
-                >
-                  <Facebook size={18} />
-                </motion.a>
-                <motion.a 
-                  href="https://twitter.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  variants={socialIconVariants}
-                  className="text-white hover:text-[#ff0000] transition-colors"
-                >
-                  <Twitter size={18} />
-                </motion.a>
-                <motion.a 
-                  href="https://instagram.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  variants={socialIconVariants}
-                  className="text-white hover:text-[#ff0000] transition-colors"
-                >
-                  <Instagram size={18} />
-                </motion.a>
-              </motion.div>
+                <Facebook size={20} />
+              </motion.a>
+              <motion.a 
+                href="https://twitter.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                variants={socialIconVariants}
+                className="text-white hover:text-[#ff0000] transition-colors"
+              >
+                <Twitter size={20} />
+              </motion.a>
+              <motion.a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                variants={socialIconVariants}
+                className="text-white hover:text-[#ff0000] transition-colors"
+              >
+                <Instagram size={20} />
+              </motion.a>
+            </motion.div>
+            
+            {/* Copyright text - centered */}
+            <div className="text-xs text-white/80 text-center">
+              © 2020 COPYRIGHT.<br />
+              ALL RIGHTS RESERVED.
             </div>
           </div>
         </motion.div>
