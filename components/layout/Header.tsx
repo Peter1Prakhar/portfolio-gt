@@ -43,10 +43,8 @@ export default function Header({ currentSection, onNavClick }: HeaderProps) {
         }`}
       >
         <div className="flex justify-between items-center">
-          <Link href="/">
-            <a className="text-white font-syne font-bold text-2xl">
-              Gilber<span className="text-accent">.</span>
-            </a>
+          <Link href="/" className="text-white font-syne font-bold text-2xl">
+            Gilber<span className="text-accent">.</span>
           </Link>
           
           {/* Desktop Menu */}
