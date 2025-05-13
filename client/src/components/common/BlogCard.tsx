@@ -37,10 +37,8 @@ export default function BlogCard({ post }: BlogCardProps) {
         </p>
         <div className="mt-4 flex justify-between items-center">
           <span className="text-text-secondary text-sm">{post.date}</span>
-          <Link href={`/blog/${post.id}`}>
-            <a className="text-white hover:text-accent transition-colors duration-300">
-              Read More
-            </a>
+          <Link href={`/blog/${post.id}`} className="text-white hover:text-accent transition-colors duration-300">
+            Read More
           </Link>
         </div>
       </div>
