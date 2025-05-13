@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { AlignJustify } from 'lucide-react';
 import { motion } from 'framer-motion';
 import MobileMenu from './MobileMenu';
 import SearchModal from '../common/SearchModal';
@@ -60,30 +60,18 @@ export default function Header({ currentSection, onNavClick }: HeaderProps) {
             Gilber<span className="text-accent">.</span>
           </Link>
           
-          {/* Menu Button - Always visible on all screen sizes */}
+          {/* Hamburger Menu Button (three lines) */}
           <div>
             <button 
               className="text-white flex items-center justify-center hover:opacity-80 transition-opacity"
               onClick={() => setSidebarOpen(true)}
               aria-label="Open menu"
             >
-              <Menu size={28} />
+              <AlignJustify size={28} />
             </button>
           </div>
         </div>
       </motion.header>
-
-      {/* Fixed Button for Desktop - Bottom right corner */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="fixed bottom-8 right-8 z-40 hidden md:flex items-center justify-center bg-accent text-white p-4 rounded-full hover:bg-accent/80 transition-colors shadow-lg"
-        onClick={() => setSidebarOpen(true)}
-        aria-label="Open menu"
-      >
-        <Menu size={24} />
-      </motion.button>
 
       {/* Sidebar Navigation */}
       <MobileMenu 
