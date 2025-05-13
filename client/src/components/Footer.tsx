@@ -9,11 +9,11 @@ export default function Footer() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="mb-4 md:mb-0">
-            <Link href="#">
-              <a className="text-xl font-poppins font-bold">
+            <div className="text-xl font-poppins font-bold">
+              <Link href="#">
                 Gilber<span className="text-accent">.</span>
-              </a>
-            </Link>
+              </Link>
+            </div>
           </div>
           
           <div className="text-muted text-sm">

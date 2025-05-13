@@ -43,49 +43,39 @@ export default function Header({ isScrolled, setIsSearchOpen }: HeaderProps) {
             </Link>
           </div>
           
-          {/* Desktop Navigation */}
-          <nav className="hidden md:block">
-            <ul className="flex items-center space-x-8">
-              {navItems.map((item) => (
-                <li key={item.id}>
-                  <a 
-                    href={item.path} 
-                    className={`text-${item.isActive ? 'accent' : 'white'} hover:text-accent transition-colors duration-300 text-sm uppercase font-medium`}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          
-          {/* Phone Number */}
-          <div className="hidden md:block">
-            <a 
-              href="tel:+12130625-10" 
-              className="text-white hover:text-accent transition-colors duration-300 text-sm font-medium"
+          <div className="flex items-center space-x-4">
+            {/* Phone Number - Always visible */}
+            <div className="hidden md:block">
+              <a 
+                href="tel:+12130625-10" 
+                className="text-white hover:text-accent transition-colors duration-300 text-sm font-medium"
+              >
+                +1 (213) 062-25-10
+              </a>
+            </div>
+            
+            {/* Search Button */}
+            <button 
+              className="p-2 text-white hover:text-accent transition-colors duration-300"
+              onClick={() => setIsSearchOpen(true)}
+              aria-label="Search"
             >
-              +1 (213) 062-25-10
-            </a>
+              <Search className="w-5 h-5" />
+            </button>
+            
+            {/* Hamburger Menu Toggle (Three Lines) */}
+            <button 
+              className="text-white p-2 focus:outline-none" 
+              onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Toggle Navigation"
+            >
+              <div className="flex flex-col justify-center items-center space-y-1">
+                <span className="block w-6 h-0.5 bg-white"></span>
+                <span className="block w-6 h-0.5 bg-white"></span>
+                <span className="block w-6 h-0.5 bg-white"></span>
+              </div>
+            </button>
           </div>
-          
-          {/* Search Button (Desktop) */}
-          <button 
-            className="hidden md:flex p-2 text-white hover:text-accent transition-colors duration-300"
-            onClick={() => setIsSearchOpen(true)}
-            aria-label="Search"
-          >
-            <Search className="w-5 h-5" />
-          </button>
-          
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden text-white p-2 focus:outline-none" 
-            onClick={() => setIsMobileMenuOpen(true)}
-            aria-label="Toggle Navigation"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
         </div>
       </div>
       
