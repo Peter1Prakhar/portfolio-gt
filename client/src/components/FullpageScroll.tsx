@@ -108,66 +108,36 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
       </AnimatePresence>
       
       {/* Vertical line navigation indicator */}
-      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-end">
-        {/* Container for line and section titles */}
-        <div className="flex items-center">
-          {/* Section titles */}
-          <div className="relative mr-4 h-[300px] text-right">
-            {['Home', 'Journey', 'Skills', 'Education', 'Testimonials', 'Articles', 'Contact'].map((title, index) => (
-              <div
+      <div className="fixed right-12 top-1/2 transform -translate-y-1/2 z-50">
+        {/* Large background white line */}
+        <div className="w-[4px] h-[400px] bg-white/30 relative rounded-full">
+          {/* Red progress overlay */}
+          <div 
+            className="absolute top-0 left-0 w-full rounded-full bg-accent transition-all duration-700 ease-in-out"
+            style={{ 
+              height: `${(currentIndex / (numSections - 1)) * 100}%`,
+              boxShadow: '0 0 12px rgba(255, 0, 0, 0.6)'
+            }}
+          />
+          
+          {/* Clickable areas for each section */}
+          <div className="absolute top-0 left-0 w-full h-full">
+            {Array.from({ length: numSections }).map((_, index) => (
+              <button
                 key={index}
-                className={`absolute transform -translate-y-1/2 transition-all duration-300 font-medium ${
-                  index === currentIndex 
-                    ? 'text-accent text-sm' 
-                    : 'text-white/40 text-xs hover:text-white/60'
-                }`}
-                style={{ 
-                  top: `${(index / (numSections - 1)) * 100}%`,
-                  right: 0
-                }}
                 onClick={() => {
                   if (!isAnimating && index !== currentIndex) {
+                    // Set direction based on target index
                     setDirection(index > currentIndex ? 1 : -1);
                     setIsAnimating(true);
                     setCurrentIndex(index);
                   }
                 }}
-              >
-                {title}
-              </div>
+                className="absolute w-12 h-12 -left-4 transform -translate-y-1/2 cursor-pointer"
+                style={{ top: `${(index / (numSections - 1)) * 100}%` }}
+                aria-label={`Go to section ${index + 1}`}
+              />
             ))}
-          </div>
-          
-          {/* Background white line */}
-          <div className="w-[2px] h-[300px] bg-white/30 relative">
-            {/* Red progress overlay */}
-            <div 
-              className="absolute top-0 left-0 w-full bg-accent transition-all duration-700 ease-in-out"
-              style={{ 
-                height: `${(currentIndex / (numSections - 1)) * 100}%`,
-                boxShadow: '0 0 8px rgba(255, 0, 0, 0.6)'
-              }}
-            />
-            
-            {/* Clickable areas for each section */}
-            <div className="absolute top-0 left-0 w-full h-full">
-              {Array.from({ length: numSections }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    if (!isAnimating && index !== currentIndex) {
-                      // Set direction based on target index
-                      setDirection(index > currentIndex ? 1 : -1);
-                      setIsAnimating(true);
-                      setCurrentIndex(index);
-                    }
-                  }}
-                  className="absolute w-8 h-8 -left-3 transform -translate-y-1/2 cursor-pointer"
-                  style={{ top: `${(index / (numSections - 1)) * 100}%` }}
-                  aria-label={`Go to section ${index + 1}`}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </div>
