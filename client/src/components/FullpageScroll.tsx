@@ -123,31 +123,44 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
           {childrenArray[currentIndex]}
         </div>
         
-        {/* Animated overlay for sliding in/out sections */}
+        {/* Animated overlays for sliding in/out sections */}
         <AnimatePresence initial={false} custom={direction}>
-          {direction !== 0 && (
+          {direction === 1 && (
+            /* When scrolling DOWN, current page slides UP to reveal next page underneath */
             <motion.div
-              key={`section-${prevIndex}`}
+              key={`section-down-${prevIndex}`}
               className="absolute inset-0 w-full h-screen bg-background"
               style={{
-                boxShadow: direction === 1 
-                  ? '0 -8px 30px rgba(255, 0, 0, 0.1)' // Shadow when sliding up
-                  : '0 8px 30px rgba(255, 0, 0, 0.1)'  // Shadow when sliding down
+                boxShadow: '0 -8px 30px rgba(255, 0, 0, 0.1)' // Shadow when sliding up
               }}
-              custom={direction}
-              initial={{ 
-                y: "0%"  // Always start from current position
-              }}
-              animate={{ 
-                y: direction === 1 ? "-100%" : "100%"  // Direction based exit
-              }}
+              initial={{ y: "0%" }}
+              animate={{ y: "-100%" }}
               transition={{
                 duration: 0.9,
                 ease: [0.25, 1, 0.5, 1]
               }}
               onAnimationComplete={handleAnimationComplete}
             >
-              {/* Always show the previous index content in the sliding panel */}
+              {childrenArray[prevIndex]}
+            </motion.div>
+          )}
+          
+          {direction === -1 && (
+            /* When scrolling UP, previous page slides DOWN like a closing shutter */
+            <motion.div
+              key={`section-up-${currentIndex+1}`}
+              className="absolute inset-0 w-full h-screen bg-background"
+              style={{
+                boxShadow: '0 8px 30px rgba(255, 0, 0, 0.1)' // Shadow when sliding down
+              }}
+              initial={{ y: "-100%" }} 
+              animate={{ y: "0%" }}
+              transition={{
+                duration: 0.9,
+                ease: [0.25, 1, 0.5, 1]
+              }}
+              onAnimationComplete={handleAnimationComplete}
+            >
               {childrenArray[prevIndex]}
             </motion.div>
           )}
