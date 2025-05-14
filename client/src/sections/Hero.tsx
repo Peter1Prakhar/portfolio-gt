@@ -1,22 +1,8 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Play, Facebook, Twitter, Instagram } from "lucide-react";
-import { Link } from "wouter";
 
 export default function Hero() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 4; // Total number of slides
   const currentYear = new Date().getFullYear();
   
-  // Auto slide rotation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 8000); // Change slide every 8 seconds
-    
-    return () => clearInterval(interval);
-  }, []);
-
   const heroStyles = {
     backgroundImage: `url('https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&q=80')`,
     backgroundSize: 'cover',
@@ -24,73 +10,43 @@ export default function Hero() {
   };
   
   return (
-    <section className="h-screen flex items-center relative">
+    <section className="h-screen relative overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 bg-cover bg-center" style={heroStyles}>
-        <div className="absolute inset-0 bg-background bg-opacity-70"></div>
+        <div className="absolute inset-0 bg-background bg-opacity-80"></div>
       </div>
       
-      {/* Social icons are now in the global layout */}
-      
-      {/* Content */}
-      <div className="container mx-auto px-4 md:px-6 z-10 ml-24">
-        <div className="max-w-3xl">
-          <motion.p 
-            className="text-lg text-muted mb-2"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            Business Strategist & Data Scientist
-          </motion.p>
-          
-          <motion.h1 
-            className="text-6xl md:text-7xl font-poppins font-bold mb-8"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            Joshua Kanatt<span className="text-accent">.</span>
-          </motion.h1>
-          
-          <motion.p 
-            className="text-base text-white/70 mb-8 max-w-md"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            I combine business acumen with data science expertise to solve complex problems across finance, healthcare, and retail sectors. With over 10 years of experience in analytics, research, and education, I help organizations leverage data for strategic growth and innovation.
-          </motion.p>
-          
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="relative"
-          >
-            <div className="border-l-4 border-accent pl-4 mb-10">
-              <p className="text-white/70 italic">
-                "Data without analysis is just numbers;<br />
-                analysis without insight is just statistics."
-              </p>
-              <p className="text-white mt-2">- Joshua Kanatt</p>
-            </div>
-          </motion.div>
-          
-          {/* Copyright */}
-          <motion.div
-            className="absolute bottom-10 left-20 text-xs text-white/50 z-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            © {currentYear} Joshua Kanatt. All rights reserved.
-          </motion.div>
-        </div>
+      {/* Minimalist Content - Positioned at bottom left */}
+      <div className="absolute bottom-20 left-20 z-10">
+        <motion.h1 
+          className="text-6xl md:text-7xl font-poppins font-bold mb-4"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          Joshua Kanatt<span className="text-accent">.</span>
+        </motion.h1>
+        
+        <motion.p 
+          className="text-base text-white/90 max-w-md"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          Business Strategist & Data Scientist with expertise<br />
+          in complex problem-solving across multiple industries.
+        </motion.p>
       </div>
       
-      {/* Right Line */}
-      <div className="absolute right-12 top-0 bottom-0 w-[1px] bg-accent z-10"></div>
+      {/* Copyright */}
+      <motion.div
+        className="absolute bottom-5 left-20 text-xs text-white/50 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.7 }}
+      >
+        © {currentYear} Joshua Kanatt. All rights reserved.
+      </motion.div>
     </section>
   );
 }
