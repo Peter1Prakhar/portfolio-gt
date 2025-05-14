@@ -51,13 +51,13 @@ export default function About() {
           <motion.div variants={itemVariants}>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=1000&q=80" 
-                alt="Professional portrait" 
+                src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=1000&q=80" 
+                alt="Joshua Kanatt professional portrait" 
                 className="w-full h-auto rounded-lg" 
               />
               <div className="absolute -bottom-6 -right-6 p-6 bg-accent rounded-lg">
                 <div className="text-center">
-                  <span className="block text-4xl font-bold font-poppins">4+</span>
+                  <span className="block text-4xl font-bold font-poppins">10+</span>
                   <span className="text-sm uppercase tracking-wider">Years Experience</span>
                 </div>
               </div>
@@ -69,14 +69,14 @@ export default function About() {
               variants={itemVariants} 
               className="text-3xl md:text-4xl font-poppins font-bold mb-6"
             >
-              Professional Journey
+              My Journey
             </motion.h2>
             
             <motion.p 
               variants={itemVariants} 
               className="text-muted mb-8"
             >
-              I'm a visionary entrepreneur with over four years of expertise in Product management, architecture, Marketing, Data analytics, Business development & Consulting, and Startups. With a unique talent for forecasting product growth, validated by extensive customer persona analysis, I've designed over 100 world-class products that set new industry standards. As an entrepreneur by heart, I bring a competitive mindset to product ownership, assuring highest performance and innovation.
+              I am a business professional, data scientist, and educator with over 10 years of experience across multiple industries. With expertise in analyzing complex business problems, implementing data-driven solutions, and teaching advanced concepts to the next generation of professionals, I've contributed to numerous successful projects in fintech, healthcare, and retail sectors. My approach combines analytical rigor with practical business acumen to deliver impactful results that drive strategic growth.
             </motion.p>
             
             <motion.div 

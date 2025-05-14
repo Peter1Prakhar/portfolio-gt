@@ -233,22 +233,22 @@ export const navItems = [
 export const services = [
   {
     id: 1,
-    title: "Product Management",
-    description: "Having a great vision to forecast product growth, With strong understanding of business model creation, product architecture, product design, marketing, financial metrics, scalability, and continuous learning. My strong market validation with conversation with 10,000 like Top VCs, angels, HNIs, top executives, and professionals."
+    title: "Data Science & Analytics",
+    description: "Expert in statistical analysis, machine learning, and predictive modeling. I've led data science projects resulting in measurable business impact across finance, healthcare, and retail sectors, using R, Python, and SQL to derive actionable insights from complex datasets."
   },
   {
     id: 2,
-    title: "MARKETING & Brand Building",
-    description: "With Strong Experience in Marketing & Stratergising have helped over 30+ brands. My deeper interest targeting on Affiliated marketing also creating in-app marketing element also using data analytics for post analytics to have higher engagement with TA. My passion for graphics and brand visualization fuels me to make brand with world class standards."
+    title: "Business Strategy & Management",
+    description: "Skilled at developing comprehensive business strategies informed by market research and data analysis. My background spans strategic planning, process optimization, and cross-functional leadership roles where I've consistently driven operational excellence and profitable growth."
   },
   {
     id: 3,
-    title: "Business Development & Management",
-    description: "With extensive experience in business development and management, I have successfully driven growth and fostered innovation across various industries. My skills in negotiation, project management, and stakeholder engagement ensure that projects are executed smoothly and deliver maximum value."
+    title: "Academic Research & Education",
+    description: "Published researcher and experienced educator with a passion for translating complex concepts into accessible knowledge. I've developed university-level courses and mentored students in business, statistics, and data science disciplines."
   },
   {
     id: 4,
-    title: "Data Analyst",
-    description: "With solid experience in Data analytics and Business analytics. Created over 5+ Professional projects and research paper helped me take solid decision for the brand based on the statistics and key numbers attained from the detailed analytical report."
+    title: "Technology Integration",
+    description: "Adept at bridging the gap between business needs and technical solutions. I specialize in evaluating emerging technologies, implementing enterprise systems, and ensuring seamless integration of digital tools to enhance organizational capabilities."
   }
 ];
