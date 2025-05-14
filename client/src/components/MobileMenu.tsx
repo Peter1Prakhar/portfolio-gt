@@ -65,7 +65,7 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
       x: 0,
       opacity: 1,
       transition: {
-        delay: i * 0.1 + 0.3, // Slower sequential animation with longer delays
+        delay: i * 0.1 + 0.6, // Increased delay so sidebar appears first
         duration: 0.6,
         type: "spring",
         stiffness: 100,
@@ -107,11 +107,11 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
       >
         {/* Language selector */}
         <motion.div 
-          className="flex justify-end space-x-6 mb-12 mr-10"
+          className="flex justify-center space-x-6 mb-12"
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 50, opacity: 0 }}
-          transition={{ delay: 0.2, duration: 0.7 }}
+          transition={{ delay: 0.5, duration: 0.7 }}
         >
           <a href="#" className="text-accent font-medium text-sm">EN</a>
           <a href="#" className="text-white/70 hover:text-white font-medium text-sm">FR</a>
@@ -131,8 +131,8 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
         </motion.button>
         
         {/* Navigation items */}
-        <nav className="flex-1 pr-12">
-          <ul className="space-y-8 mt-16">
+        <nav className="flex-1">
+          <ul className="space-y-8 mt-16 text-center">
             {navItems.map((item, i) => (
               <motion.li 
                 key={item.id}
@@ -145,7 +145,9 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
                 <a 
                   href={item.path} 
                   className={`block text-2xl font-medium transition-colors duration-300 ${
-                    item.isActive ? 'text-accent border-l-4 border-accent pl-4' : 'text-white hover:text-accent'
+                    item.isActive 
+                      ? 'text-accent border-l-2 border-r-2 border-accent mx-auto w-fit px-4' 
+                      : 'text-white hover:text-accent'
                   }`}
                   onClick={onClose}
                 >
@@ -158,22 +160,24 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
         
         {/* Bottom info */}
         <motion.div 
-          className="mt-auto flex items-center space-x-4 text-white/50 text-sm pt-6"
+          className="mt-auto flex flex-col items-center justify-center space-y-2 text-white/50 text-sm pt-6"
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 50, opacity: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
         >
-          <a href="#" className="hover:text-white/80 transition-colors">
-            <Facebook className="w-4 h-4" />
-          </a>
-          <a href="#" className="hover:text-white/80 transition-colors">
-            <Twitter className="w-4 h-4" />
-          </a>
-          <a href="#" className="hover:text-white/80 transition-colors">
-            <Instagram className="w-4 h-4" />
-          </a>
-          <span className="text-xs ml-4">© {currentYear} COPYRIGHT.<br/>ALL RIGHTS RESERVED.</span>
+          <div className="flex space-x-6">
+            <a href="#" className="hover:text-white/80 transition-colors">
+              <Facebook className="w-4 h-4" />
+            </a>
+            <a href="#" className="hover:text-white/80 transition-colors">
+              <Twitter className="w-4 h-4" />
+            </a>
+            <a href="#" className="hover:text-white/80 transition-colors">
+              <Instagram className="w-4 h-4" />
+            </a>
+          </div>
+          <span className="text-xs text-center">© {currentYear} COPYRIGHT.<br/>ALL RIGHTS RESERVED.</span>
         </motion.div>
         
         {/* Right red line */}
