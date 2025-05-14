@@ -33,7 +33,7 @@ export default function Hero() {
       {/* Social icons are now in the global layout */}
       
       {/* Content */}
-      <div className="container mx-auto px-4 md:px-6 z-10 ml-20">
+      <div className="container mx-auto px-4 md:px-6 z-10 ml-24">
         <div className="max-w-3xl">
           <motion.p 
             className="text-lg text-muted mb-2"

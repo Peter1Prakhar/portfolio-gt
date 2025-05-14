@@ -28,14 +28,14 @@ export default function Header({ isScrolled, setIsSearchOpen }: HeaderProps) {
   return (
     <header 
       ref={headerRef}
-      className={`fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 py-6 transition-all duration-300 ${
         isScrolled ? "bg-background bg-opacity-90 shadow-lg backdrop-blur-sm" : ""
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="w-full px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl md:text-3xl font-poppins font-bold ml-20 md:ml-10">
+          <div className="text-2xl md:text-3xl font-poppins font-bold ml-8">
             <Link href="#">
               Gilber<span className="text-accent">.</span>
             </Link>
@@ -43,13 +43,13 @@ export default function Header({ isScrolled, setIsSearchOpen }: HeaderProps) {
           
           {/* Hamburger Menu Toggle (Three Lines) */}
           <button 
-            className="text-white focus:outline-none mr-6" 
+            className="text-white focus:outline-none mr-8" 
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Toggle Navigation"
           >
             <svg 
-              width="32" 
-              height="32" 
+              width="36" 
+              height="36" 
               viewBox="0 0 24 24" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
