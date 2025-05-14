@@ -15,7 +15,7 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenuProps) {
   // Get current section from context
-  const { currentIndex } = useCurrentSection();
+  const { currentIndex, setCurrentIndex } = useCurrentSection();
   
   // Get navigation items with active state based on current section
   const [activeNavItems, setActiveNavItems] = useState<NavItem[]>(navItems);
@@ -179,7 +179,7 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
         {/* Navigation items */}
         <nav className="flex-1">
           <ul className="space-y-8 mt-16 text-center">
-            {navItems.map((item, i) => (
+            {activeNavItems.map((item, i) => (
               <motion.li 
                 key={item.id}
                 custom={i}
@@ -195,10 +195,14 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
                       ? 'text-accent' 
                       : 'text-white hover:text-accent'
                   }`}
-                  onClick={onClose}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentIndex(item.sectionIndex);
+                    onClose();
+                  }}
                 >
                   {item.isActive && (
-                    <span className="absolute left-[-20px] top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent shadow-[0_0_8px_rgba(255,0,0,0.6)]"></span>
+                    <span className="absolute left-[-25px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-accent shadow-[0_0_10px_rgba(255,0,0,0.8)] animate-pulse"></span>
                   )}
                   {item.label}
                 </a>
