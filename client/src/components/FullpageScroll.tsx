@@ -109,8 +109,8 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
       
       {/* Vertical line navigation indicator */}
       <div className="fixed right-12 top-1/2 transform -translate-y-1/2 z-50">
-        {/* Large background white line */}
-        <div className="w-[4px] h-[400px] bg-white/30 relative rounded-full">
+        {/* Large background white line - taller, thinner and more white */}
+        <div className="w-[2px] h-[500px] bg-white/70 relative rounded-full">
           {/* Red progress overlay */}
           <div 
             className="absolute top-0 left-0 w-full rounded-full bg-accent transition-all duration-700 ease-in-out"
@@ -133,7 +133,7 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
                     setCurrentIndex(index);
                   }
                 }}
-                className="absolute w-12 h-12 -left-4 transform -translate-y-1/2 cursor-pointer"
+                className="absolute w-10 h-10 -left-4 transform -translate-y-1/2 cursor-pointer"
                 style={{ top: `${(index / (numSections - 1)) * 100}%` }}
                 aria-label={`Go to section ${index + 1}`}
               />
