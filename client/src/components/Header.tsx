@@ -35,7 +35,7 @@ export default function Header({ isScrolled, setIsSearchOpen }: HeaderProps) {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-xl font-poppins font-bold ml-20 md:ml-0">
+          <div className="text-2xl md:text-3xl font-poppins font-bold ml-20 md:ml-10">
             <Link href="#">
               Gilber<span className="text-accent">.</span>
             </Link>
@@ -43,17 +43,16 @@ export default function Header({ isScrolled, setIsSearchOpen }: HeaderProps) {
           
           {/* Hamburger Menu Toggle (Three Lines) */}
           <button 
-            className="text-white focus:outline-none" 
+            className="text-white focus:outline-none mr-6" 
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Toggle Navigation"
           >
             <svg 
-              width="24" 
-              height="24" 
+              width="32" 
+              height="32" 
               viewBox="0 0 24 24" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
-              className="transform scale-75"
             >
               <path 
                 d="M3 6H21" 

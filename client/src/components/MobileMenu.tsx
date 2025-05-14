@@ -75,17 +75,8 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
           </div>
         </div>
         
-        <div className="absolute bottom-10 left-20 flex items-center space-x-4 text-white/50 text-sm">
-          <a href="#" className="hover:text-white/80 transition-colors">
-            <Facebook className="w-4 h-4" />
-          </a>
-          <a href="#" className="hover:text-white/80 transition-colors">
-            <Twitter className="w-4 h-4" />
-          </a>
-          <a href="#" className="hover:text-white/80 transition-colors">
-            <Instagram className="w-4 h-4" />
-          </a>
-          <span className="text-xs ml-4">© {currentYear} COPYRIGHT.<br/>ALL RIGHTS RESERVED.</span>
+        <div className="absolute bottom-10 left-20 text-white/50 text-xs">
+          <span>© {currentYear} COPYRIGHT.<br/>ALL RIGHTS RESERVED.</span>
         </div>
       </div>
       

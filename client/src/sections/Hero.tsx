@@ -30,20 +30,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-background bg-opacity-70"></div>
       </div>
       
-      {/* Social Icons */}
-      <div className="fixed left-8 top-1/2 h-60 flex flex-col justify-between items-center z-10 -translate-y-1/2">
-        <div className="h-20 w-[1px] bg-gray-700 opacity-50 mb-6"></div>
-        <a href="#" className="text-white hover:text-accent transition-colors duration-300 mb-6">
-          <Facebook className="w-5 h-5" />
-        </a>
-        <a href="#" className="text-white hover:text-accent transition-colors duration-300 mb-6">
-          <Twitter className="w-5 h-5" />
-        </a>
-        <a href="#" className="text-white hover:text-accent transition-colors duration-300 mb-6">
-          <Instagram className="w-5 h-5" />
-        </a>
-        <div className="h-20 w-[1px] bg-gray-700 opacity-50"></div>
-      </div>
+      {/* Social icons are now in the global layout */}
       
       {/* Content */}
       <div className="container mx-auto px-4 md:px-6 z-10 ml-20">

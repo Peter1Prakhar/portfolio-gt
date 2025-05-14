@@ -2,6 +2,7 @@ import { ReactNode, useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SearchModal from "@/components/SearchModal";
+import SocialSidebar from "@/components/SocialSidebar";
 import { AnimatePresence } from "framer-motion";
 
 interface LayoutProps {
@@ -41,6 +42,8 @@ export default function Layout({ children, isSearchOpen, setIsSearchOpen }: Layo
         isScrolled={isScrolled} 
         setIsSearchOpen={setIsSearchOpen} 
       />
+      
+      <SocialSidebar />
       
       <main className="flex-grow">
         {children}
