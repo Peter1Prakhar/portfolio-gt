@@ -64,10 +64,10 @@ export default function Hero() {
           className="mb-8 inline-block"
         >
           <button 
-            className="group relative flex items-center justify-center w-14 h-14 rounded-full border-2 border-white hover:bg-white/10 transition-all duration-300"
+            className="group relative flex items-center justify-center w-20 h-20 rounded-full border-2 border-white hover:bg-white/10 transition-all duration-300"
             aria-label="Play Video"
           >
-            <span className="block w-0 h-0 border-t-[8px] border-t-transparent border-l-[16px] border-l-white border-b-[8px] border-b-transparent ml-1"></span>
+            <span className="block w-0 h-0 border-t-[10px] border-t-transparent border-l-[20px] border-l-white border-b-[10px] border-b-transparent ml-1"></span>
             
             {/* Ripple effect */}
             <span className="absolute inset-0 rounded-full border-2 border-white animate-ping opacity-75"></span>
