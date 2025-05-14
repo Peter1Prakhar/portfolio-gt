@@ -119,7 +119,7 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
           {childrenArray[currentIndex]}
         </div>
         
-        {/* Down animation - current page slides up */}
+        {/* Down animation - current page slides up to reveal next page */}
         <AnimatePresence>
           {direction === 1 && (
             <motion.div
@@ -136,7 +136,7 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
           )}
         </AnimatePresence>
         
-        {/* Up animation - previous page slides down */}
+        {/* Up animation - previous page slides down to cover current page */}
         <AnimatePresence>
           {direction === -1 && (
             <motion.div
@@ -148,7 +148,7 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
               transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
               onAnimationComplete={handleAnimationComplete}
             >
-              {childrenArray[currentIndex + 1]}
+              {childrenArray[currentIndex - 1]}
             </motion.div>
           )}
         </AnimatePresence>
