@@ -107,27 +107,69 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
         )}
       </AnimatePresence>
       
-      {/* Navigation indicators */}
-      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col space-y-4">
-        {Array.from({ length: numSections }).map((_, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              if (!isAnimating && index !== currentIndex) {
-                // Set direction based on target index
-                setDirection(index > currentIndex ? 1 : -1);
-                setIsAnimating(true);
-                setCurrentIndex(index);
-              }
-            }}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex 
-                ? 'bg-accent w-4 h-4 shadow-[0_0_10px_rgba(255,0,0,0.7)]' 
-                : 'bg-white/30 hover:bg-white/50'
-            }`}
-            aria-label={`Go to section ${index + 1}`}
-          />
-        ))}
+      {/* Vertical line navigation indicator */}
+      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-end">
+        {/* Container for line and section titles */}
+        <div className="flex items-center">
+          {/* Section titles */}
+          <div className="relative mr-4 h-[300px] text-right">
+            {['Home', 'Journey', 'Skills', 'Education', 'Testimonials', 'Articles', 'Contact'].map((title, index) => (
+              <div
+                key={index}
+                className={`absolute transform -translate-y-1/2 transition-all duration-300 font-medium ${
+                  index === currentIndex 
+                    ? 'text-accent text-sm' 
+                    : 'text-white/40 text-xs hover:text-white/60'
+                }`}
+                style={{ 
+                  top: `${(index / (numSections - 1)) * 100}%`,
+                  right: 0
+                }}
+                onClick={() => {
+                  if (!isAnimating && index !== currentIndex) {
+                    setDirection(index > currentIndex ? 1 : -1);
+                    setIsAnimating(true);
+                    setCurrentIndex(index);
+                  }
+                }}
+              >
+                {title}
+              </div>
+            ))}
+          </div>
+          
+          {/* Background white line */}
+          <div className="w-[2px] h-[300px] bg-white/30 relative">
+            {/* Red progress overlay */}
+            <div 
+              className="absolute top-0 left-0 w-full bg-accent transition-all duration-700 ease-in-out"
+              style={{ 
+                height: `${(currentIndex / (numSections - 1)) * 100}%`,
+                boxShadow: '0 0 8px rgba(255, 0, 0, 0.6)'
+              }}
+            />
+            
+            {/* Clickable areas for each section */}
+            <div className="absolute top-0 left-0 w-full h-full">
+              {Array.from({ length: numSections }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    if (!isAnimating && index !== currentIndex) {
+                      // Set direction based on target index
+                      setDirection(index > currentIndex ? 1 : -1);
+                      setIsAnimating(true);
+                      setCurrentIndex(index);
+                    }
+                  }}
+                  className="absolute w-8 h-8 -left-3 transform -translate-y-1/2 cursor-pointer"
+                  style={{ top: `${(index / (numSections - 1)) * 100}%` }}
+                  aria-label={`Go to section ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
