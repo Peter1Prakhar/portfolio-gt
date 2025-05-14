@@ -97,7 +97,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 bg-secondary">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6 section-container">
         <motion.div 
           ref={ref}
           initial="hidden"
