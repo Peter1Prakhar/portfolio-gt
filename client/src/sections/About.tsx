@@ -40,7 +40,7 @@ export default function About() {
 
   return (
     <section id="journey" className="py-24 bg-secondary">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6 section-container">
         <motion.div 
           ref={ref}
           variants={containerVariants}

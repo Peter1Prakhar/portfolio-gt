@@ -38,6 +38,11 @@
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
 }
 
+/* Section container styles to prevent overlap with sidebar */
+.section-container {
+  padding-left: 6rem !important; /* Add extra padding on the left to avoid overlap with social sidebar */
+}
+
 @layer base {
   :root {
     /* Base colors adjusted for the Gilber theme */
