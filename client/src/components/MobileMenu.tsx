@@ -25,27 +25,37 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
     return () => window.removeEventListener('keydown', handleEscKey);
   }, [onClose]);
 
-  const menuVariants = {
-    hidden: {
-      y: "-100%",
-      opacity: 0,
-    },
-    visible: {
-      y: "0%",
+  // Background overlay animation
+  const overlayVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
       opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeInOut",
-      },
+      transition: { duration: 0.3 } 
     },
-    exit: {
-      y: "-100%",
+    exit: { 
       opacity: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.3, delay: 0.1 } 
+    }
+  };
+
+  // Right panel animation (sliding from right)
+  const rightPanelVariants = {
+    hidden: { x: "100%" },
+    visible: { 
+      x: "0%", 
+      transition: { 
+        type: "spring",
+        stiffness: 300,
+        damping: 30
+      } 
     },
+    exit: { 
+      x: "100%", 
+      transition: { 
+        duration: 0.3,
+        ease: "easeInOut" 
+      } 
+    }
   };
 
   const itemVariants = {
@@ -63,27 +73,25 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
   const currentYear = new Date().getFullYear();
 
   return (
-    <motion.div 
-      className="fixed inset-0 flex z-50 pointer-events-auto"
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      variants={menuVariants}
-    >
-      <div className="w-3/5 relative bg-background bg-opacity-95">
-        
-        <div className="ml-20 mt-12">
-          <div className="text-xl font-poppins font-bold">
-            Gilber<span className="text-accent">.</span>
-          </div>
-        </div>
-        
-        <div className="absolute bottom-10 left-20 text-white/50 text-xs">
-          <span>© {currentYear} COPYRIGHT.<br/>ALL RIGHTS RESERVED.</span>
-        </div>
-      </div>
-      
-      <div className="w-2/5 flex flex-col bg-black py-12 px-8 relative shadow-2xl">
+    <div className="fixed inset-0 z-50 pointer-events-auto">
+      {/* Semi-transparent overlay */}
+      <motion.div 
+        className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={overlayVariants}
+        onClick={onClose}
+      />
+
+      {/* Right navigation panel */}
+      <motion.div 
+        className="absolute top-0 right-0 bottom-0 w-[450px] bg-black shadow-2xl flex flex-col py-12 px-8"
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={rightPanelVariants}
+      >
         {/* Language selector */}
         <div className="flex justify-end space-x-6 mb-12 mr-10">
           <a href="#" className="text-accent font-medium text-sm">EN</a>
@@ -99,7 +107,7 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
           <X className="w-6 h-6" />
         </button>
         
-        {/* Right sidebar with nav items */}
+        {/* Navigation items */}
         <nav className="flex-1 pr-12">
           <ul className="space-y-8 mt-16">
             {navItems.map((item, i) => (
@@ -124,9 +132,23 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
           </ul>
         </nav>
         
+        {/* Bottom info */}
+        <div className="mt-auto flex items-center space-x-4 text-white/50 text-sm pt-6">
+          <a href="#" className="hover:text-white/80 transition-colors">
+            <Facebook className="w-4 h-4" />
+          </a>
+          <a href="#" className="hover:text-white/80 transition-colors">
+            <Twitter className="w-4 h-4" />
+          </a>
+          <a href="#" className="hover:text-white/80 transition-colors">
+            <Instagram className="w-4 h-4" />
+          </a>
+          <span className="text-xs ml-4">© {currentYear} COPYRIGHT.<br/>ALL RIGHTS RESERVED.</span>
+        </div>
+        
         {/* Right red line */}
         <div className="absolute right-12 top-0 bottom-0 w-[1px] bg-accent"></div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }

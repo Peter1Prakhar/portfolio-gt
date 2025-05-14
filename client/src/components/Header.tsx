@@ -81,6 +81,7 @@ export default function Header({ isScrolled, setIsSearchOpen }: HeaderProps) {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <MobileMenu 
+            key="mobile-menu"
             isOpen={isMobileMenuOpen} 
             onClose={() => setIsMobileMenuOpen(false)}
             onSearchOpen={() => {
