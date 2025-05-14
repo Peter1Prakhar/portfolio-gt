@@ -1,19 +1,12 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import portraitImage from "../assets/joshua_portrait.png";
+import steveJobsImage from "../assets/steve_jobs.png";
 
 export default function Hero() {
   const currentYear = new Date().getFullYear();
   const [isLoaded, setIsLoaded] = useState(false);
   
-  // Base background style - will be visible behind the portrait
-  const heroStyles = {
-    backgroundImage: `url('https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&q=80')`,
-    backgroundSize: '450%', // Make the background image extremely large like the reference
-    backgroundPosition: '90% 20%', // Position to match the reference image
-    backgroundRepeat: 'no-repeat'
-  };
-
   // Trigger the zoom animation after component mounts
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,9 +18,25 @@ export default function Hero() {
   
   return (
     <section className="h-screen relative overflow-hidden">
-      {/* Base Background with Overlay */}
-      <div className="absolute inset-0 bg-cover bg-center" style={heroStyles}>
-        <div className="absolute inset-0 bg-background bg-opacity-40"></div>
+      {/* Dark background */}
+      <div className="absolute inset-0 bg-background"></div>
+      
+      {/* Steve Jobs image positioned on the right */}
+      <div className="absolute top-0 right-0 bottom-0 w-2/3 overflow-hidden">
+        <div className="relative w-full h-full">
+          <img 
+            src={steveJobsImage} 
+            alt="Background Portrait" 
+            className="absolute top-0 right-0 h-full w-auto object-cover object-right"
+            style={{ 
+              maxWidth: 'none', 
+              transform: 'scale(2.1) translateX(20%)',
+              filter: 'brightness(0.85)'
+            }}
+          />
+          {/* Light overlay */}
+          <div className="absolute inset-0 bg-background bg-opacity-35"></div>
+        </div>
       </div>
       
       {/* Portrait Image with Zoom Animation */}
