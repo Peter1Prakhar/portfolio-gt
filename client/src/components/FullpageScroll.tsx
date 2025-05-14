@@ -118,10 +118,10 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
           {childrenArray[currentIndex]}
         </div>
         
-        {/* Scroll Down - The current (now previous) section slides up */}
+        {/* Scroll Down - Page Y slides up to reveal page Z underneath */}
         {direction === 1 && currentIndex > 0 && (
           <motion.div
-            key={`scroll-down-${currentIndex}`}
+            key={`scroll-down-from-${currentIndex-1}-to-${currentIndex}`}
             className="absolute inset-0 w-full h-screen bg-background z-10"
             style={{ boxShadow: '0 -8px 30px rgba(255, 0, 0, 0.1)' }}
             initial={{ y: 0 }}
@@ -129,14 +129,14 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
             transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
             onAnimationComplete={handleAnimationComplete}
           >
-            {childrenArray[currentIndex - 1]}
+            {childrenArray[currentIndex - 1]} {/* Show page Y sliding up */}
           </motion.div>
         )}
         
-        {/* Scroll Up - The previous section slides down */}
-        {direction === -1 && currentIndex >= 0 && (
+        {/* Scroll Up - The upper page (X) slides down to cover current page (Y) */}
+        {direction === -1 && currentIndex > 0 && (
           <motion.div
-            key={`scroll-up-${currentIndex}`}
+            key={`scroll-up-from-${currentIndex+1}-to-${currentIndex}`}
             className="absolute inset-0 w-full h-screen bg-background z-10"
             style={{ boxShadow: '0 8px 30px rgba(255, 0, 0, 0.1)' }}
             initial={{ y: "-100%" }}
@@ -144,7 +144,7 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
             transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
             onAnimationComplete={handleAnimationComplete}
           >
-            {childrenArray[currentIndex - 1]}
+            {childrenArray[currentIndex - 1]} {/* Show page X sliding down */}
           </motion.div>
         )}
         
