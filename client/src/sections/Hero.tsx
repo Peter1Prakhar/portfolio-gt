@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import portraitImage from "../assets/joshua_portrait.png";
 
 export default function Hero() {
   const currentYear = new Date().getFullYear();
@@ -45,7 +46,7 @@ export default function Hero() {
           <div className="absolute inset-0 rounded-full border-2 border-accent/20"></div>
           <div className="absolute inset-0 rounded-full border-4 border-white/5"></div>
           <img 
-            src="/assets/images/joshua_portrait.png" 
+            src={portraitImage} 
             alt="Joshua Kanatt" 
             className="w-full h-full object-contain"
           />
