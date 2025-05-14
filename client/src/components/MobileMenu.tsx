@@ -27,20 +27,23 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
 
   const menuVariants = {
     hidden: {
+      y: "-100%",
       opacity: 0,
     },
     visible: {
+      y: "0%",
       opacity: 1,
       transition: {
-        duration: 0.3,
+        duration: 0.5,
         ease: "easeInOut",
       },
     },
     exit: {
+      y: "-100%",
       opacity: 0,
       transition: {
-        duration: 0.3,
-        ease: "easeInOut",
+        duration: 0.4,
+        ease: "easeOut",
       },
     },
   };
@@ -61,13 +64,13 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
 
   return (
     <motion.div 
-      className="fixed inset-0 bg-background bg-opacity-95 flex z-50"
+      className="fixed inset-0 flex z-50 pointer-events-auto"
       initial="hidden"
       animate="visible"
       exit="exit"
       variants={menuVariants}
     >
-      <div className="w-3/5 relative">
+      <div className="w-3/5 relative bg-background bg-opacity-95">
         
         <div className="ml-20 mt-12">
           <div className="text-xl font-poppins font-bold">
@@ -80,7 +83,7 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
         </div>
       </div>
       
-      <div className="w-2/5 flex flex-col bg-black py-12 px-8 relative">
+      <div className="w-2/5 flex flex-col bg-black py-12 px-8 relative shadow-2xl">
         {/* Language selector */}
         <div className="flex justify-end space-x-6 mb-12 mr-10">
           <a href="#" className="text-accent font-medium text-sm">EN</a>
