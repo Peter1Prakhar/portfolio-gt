@@ -39,7 +39,7 @@ export default function About() {
   };
 
   return (
-    <section className="py-24 bg-secondary">
+    <section id="journey" className="py-24 bg-secondary">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div 
           ref={ref}
@@ -57,7 +57,7 @@ export default function About() {
               />
               <div className="absolute -bottom-6 -right-6 p-6 bg-accent rounded-lg">
                 <div className="text-center">
-                  <span className="block text-4xl font-bold font-poppins">15+</span>
+                  <span className="block text-4xl font-bold font-poppins">4+</span>
                   <span className="text-sm uppercase tracking-wider">Years Experience</span>
                 </div>
               </div>
@@ -69,14 +69,14 @@ export default function About() {
               variants={itemVariants} 
               className="text-3xl md:text-4xl font-poppins font-bold mb-6"
             >
-              Great Experience
+              Professional Journey
             </motion.h2>
             
             <motion.p 
               variants={itemVariants} 
               className="text-muted mb-8"
             >
-              I am a UI/UX designer with a passion for creating engaging and intuitive digital experiences. With over 15 years of experience in the design industry, I've worked with clients across various sectors including technology, healthcare, and finance.
+              I'm a visionary entrepreneur with over four years of expertise in Product management, architecture, Marketing, Data analytics, Business development & Consulting, and Startups. With a unique talent for forecasting product growth, validated by extensive customer persona analysis, I've designed over 100 world-class products that set new industry standards. As an entrepreneur by heart, I bring a competitive mindset to product ownership, assuring highest performance and innovation.
             </motion.p>
             
             <motion.div 

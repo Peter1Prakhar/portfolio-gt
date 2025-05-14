@@ -41,16 +41,16 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            Product Designer
+            Founder & Chief Executive Officer - GAMERS TAG
           </motion.p>
           
           <motion.h1 
-            className="text-6xl md:text-8xl font-poppins font-bold mb-8"
+            className="text-6xl md:text-7xl font-poppins font-bold mb-8"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Gilber<span className="text-accent">.</span>
+            Joshua Kanatt<span className="text-accent">.</span>
           </motion.h1>
           
           <motion.p 
@@ -59,7 +59,7 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Working with client and community, we deliver masterplans that create vibrant new places and spaces, attract people, and encourage.
+            I'm a visionary entrepreneur with over four years of expertise in Product management, architecture, Marketing, Data analytics, Business development & Consulting, and Startups. Designed over 100 world-class products, setting new industry standards.
           </motion.p>
           
           <motion.div
@@ -68,9 +68,13 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="relative"
           >
-            <button className="rounded-full border border-white/30 p-6 group">
-              <Play className="w-6 h-6 text-white group-hover:text-accent transition-colors" />
-            </button>
+            <div className="border-l-4 border-accent pl-4 mb-10">
+              <p className="text-white/70 italic">
+                "The journey of a thousand miles begins<br />
+                with a single innovative step."
+              </p>
+              <p className="text-white mt-2">- Joshua Kanatt</p>
+            </div>
           </motion.div>
           
           {/* Copyright */}
@@ -80,7 +84,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            © Gilber. {currentYear}
+            © {currentYear} Joshua Kanatt. All rights reserved.
           </motion.div>
         </div>
       </div>
