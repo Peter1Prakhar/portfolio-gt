@@ -110,33 +110,38 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
       {/* Vertical line navigation indicator */}
       <div className="fixed right-12 top-1/2 transform -translate-y-1/2 z-50">
         {/* Large background white line - taller, thinner and more white */}
-        <div className="w-[2px] h-[500px] bg-white/70 relative rounded-full">
+        <div className="w-[1px] h-[500px] bg-white/70 relative rounded-full">
           {/* Red progress overlay */}
           <div 
             className="absolute top-0 left-0 w-full rounded-full bg-accent transition-all duration-700 ease-in-out"
             style={{ 
               height: `${(currentIndex / (numSections - 1)) * 100}%`,
-              boxShadow: '0 0 12px rgba(255, 0, 0, 0.6)'
+              boxShadow: '0 0 8px rgba(255, 0, 0, 0.4)'
             }}
           />
           
-          {/* Clickable areas for each section */}
+          {/* Section dots */}
           <div className="absolute top-0 left-0 w-full h-full">
             {Array.from({ length: numSections }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  if (!isAnimating && index !== currentIndex) {
-                    // Set direction based on target index
-                    setDirection(index > currentIndex ? 1 : -1);
-                    setIsAnimating(true);
-                    setCurrentIndex(index);
-                  }
-                }}
-                className="absolute w-10 h-10 -left-4 transform -translate-y-1/2 cursor-pointer"
-                style={{ top: `${(index / (numSections - 1)) * 100}%` }}
-                aria-label={`Go to section ${index + 1}`}
-              />
+              <div key={index} className="absolute -left-2 transform -translate-y-1/2" style={{ top: `${(index / (numSections - 1)) * 100}%` }}>
+                {/* Red dot for current page */}
+                <div 
+                  className={`w-4 h-4 rounded-full transition-all duration-300 cursor-pointer ${
+                    index === currentIndex 
+                      ? 'bg-accent shadow-[0_0_8px_rgba(255,0,0,0.6)]' 
+                      : 'bg-white/30 hover:bg-white/50'
+                  }`}
+                  onClick={() => {
+                    if (!isAnimating && index !== currentIndex) {
+                      // Set direction based on target index
+                      setDirection(index > currentIndex ? 1 : -1);
+                      setIsAnimating(true);
+                      setCurrentIndex(index);
+                    }
+                  }}
+                  aria-label={`Go to section ${index + 1}`}
+                />
+              </div>
             ))}
           </div>
         </div>
