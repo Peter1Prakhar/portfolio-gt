@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode, Children, cloneElement, ReactElement } from "react";
+import { useState, useEffect, ReactNode, Children } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface FullpageScrollProps {
@@ -7,6 +7,7 @@ interface FullpageScrollProps {
 
 export default function FullpageScroll({ children }: FullpageScrollProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // 1 for down, -1 for up
   const [isAnimating, setIsAnimating] = useState(false);
   const numSections = Children.count(children);
   
@@ -19,10 +20,12 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
     
     if (e.deltaY > 0 && currentIndex < numSections - 1) {
       // Scrolling down
+      setDirection(1);
       setIsAnimating(true);
       setCurrentIndex(prev => prev + 1);
     } else if (e.deltaY < 0 && currentIndex > 0) {
       // Scrolling up
+      setDirection(-1);
       setIsAnimating(true);
       setCurrentIndex(prev => prev - 1);
     }
@@ -33,9 +36,11 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
     if (isAnimating) return;
     
     if ((e.key === 'ArrowDown' || e.key === 'PageDown') && currentIndex < numSections - 1) {
+      setDirection(1);
       setIsAnimating(true);
       setCurrentIndex(prev => prev + 1);
     } else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && currentIndex > 0) {
+      setDirection(-1);
       setIsAnimating(true);
       setCurrentIndex(prev => prev - 1);
     }
@@ -52,62 +57,54 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
     };
   }, [currentIndex, isAnimating]);
   
-  // Animation variants for the shutter effect
-  const pageVariants = {
-    // Next page coming from below
-    enter: {
-      y: "100%",
-      transition: { 
-        duration: 0.9,
-        ease: [0.25, 1, 0.5, 1] // Custom easing for a more dramatic effect
-      }
-    },
-    // Current page in view
-    center: {
-      y: 0,
-      transition: { 
-        duration: 0.9,
-        ease: [0.25, 1, 0.5, 1]
-      }
-    },
-    // Current page sliding up to reveal next page
-    exit: {
-      y: "-100%",
-      transition: { 
-        duration: 0.9,
-        ease: [0.25, 1, 0.5, 1]
-      }
-    },
-  };
-  
   // Handle animation complete
   const handleAnimationComplete = () => {
     setIsAnimating(false);
   };
   
+  // Get all children as an array for accessing adjacent sections
+  const childrenArray = Children.toArray(children);
+  
   return (
     <div className="h-screen overflow-hidden fixed inset-0 w-full">
-      <AnimatePresence initial={false} mode="wait">
-        <motion.div
-          key={currentIndex}
-          variants={pageVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          className="absolute inset-0 w-full h-screen bg-background"
-          style={{
-            boxShadow: '0 -8px 30px rgba(255, 0, 0, 0.1)'
-          }}
-          onAnimationComplete={handleAnimationComplete}
-        >
-          {/* Render only the current section without additional props */}
-          {Children.map(children, (child, index) => {
-            if (index === currentIndex) {
-              return child;
+      {/* Background section (what's revealed underneath) */}
+      <div className="absolute inset-0 w-full h-screen">
+        {childrenArray[currentIndex]}
+      </div>
+      
+      {/* Animated overlay for sliding in/out sections */}
+      <AnimatePresence initial={false} custom={direction}>
+        {direction !== 0 && (
+          <motion.div
+            key={direction === 1 ? currentIndex - 1 : currentIndex + 1}
+            className="absolute inset-0 w-full h-screen bg-background"
+            style={{
+              boxShadow: direction === 1 
+                ? '0 -8px 30px rgba(255, 0, 0, 0.1)' // Shadow when sliding up
+                : '0 8px 30px rgba(255, 0, 0, 0.1)'  // Shadow when sliding down
+            }}
+            custom={direction}
+            initial={{ 
+              y: direction === 1 ? "0%" : "-100%" 
+            }}
+            animate={{ 
+              y: direction === 1 ? "-100%" : "0%" 
+            }}
+            exit={{ 
+              y: direction === 1 ? "-200%" : "100%" 
+            }}
+            transition={{
+              duration: 0.9,
+              ease: [0.25, 1, 0.5, 1]
+            }}
+            onAnimationComplete={handleAnimationComplete}
+          >
+            {direction === 1 
+              ? childrenArray[currentIndex - 1] // Previous section sliding up
+              : childrenArray[currentIndex + 1] // Next section sliding down
             }
-            return null;
-          })}
-        </motion.div>
+          </motion.div>
+        )}
       </AnimatePresence>
       
       {/* Navigation indicators */}
@@ -117,6 +114,8 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
             key={index}
             onClick={() => {
               if (!isAnimating && index !== currentIndex) {
+                // Set direction based on target index
+                setDirection(index > currentIndex ? 1 : -1);
                 setIsAnimating(true);
                 setCurrentIndex(index);
               }
