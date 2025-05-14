@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { navItems } from "@/lib/data";
+import { navItems, getNavItemsWithActive, NavItem } from "@/lib/data";
 import { motion } from "framer-motion";
 import { 
   X, Facebook, Twitter, Instagram
 } from "lucide-react";
+import { useCurrentSection } from "./FullpageScroll";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -13,6 +14,16 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenuProps) {
+  // Get current section from context
+  const { currentIndex } = useCurrentSection();
+  
+  // Get navigation items with active state based on current section
+  const [activeNavItems, setActiveNavItems] = useState<NavItem[]>(navItems);
+  
+  // Update active nav items when current section changes
+  useEffect(() => {
+    setActiveNavItems(getNavItemsWithActive(currentIndex));
+  }, [currentIndex]);
   // Close mobile menu on ESC key press
   useEffect(() => {
     const handleEscKey = (e: KeyboardEvent) => {
@@ -179,13 +190,16 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
               >
                 <a 
                   href={item.path} 
-                  className={`block text-2xl font-medium transition-colors duration-300 ${
+                  className={`block text-2xl font-medium transition-colors duration-300 relative ${
                     item.isActive 
-                      ? 'text-accent border-l-2 border-r-2 border-accent mx-auto w-fit px-4' 
+                      ? 'text-accent' 
                       : 'text-white hover:text-accent'
                   }`}
                   onClick={onClose}
                 >
+                  {item.isActive && (
+                    <span className="absolute left-[-20px] top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent shadow-[0_0_8px_rgba(255,0,0,0.6)]"></span>
+                  )}
                   {item.label}
                 </a>
               </motion.li>

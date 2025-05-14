@@ -217,16 +217,33 @@ export const timelineData = [
   }
 ];
 
-// Navigation items
-export const navItems = [
-  { id: 1, label: "Home", path: "#", isActive: true },
-  { id: 2, label: "Journey", path: "#journey" },
-  { id: 3, label: "Skills", path: "#skills" },
-  { id: 4, label: "Testimonials", path: "#testimonials" },
-  { id: 5, label: "Education", path: "#education" },
-  { id: 6, label: "Articles & News", path: "#articles" },
-  { id: 7, label: "Contact", path: "#contact" }
+// Navigation items with their section index
+export interface NavItem {
+  id: number;
+  label: string;
+  path: string;
+  sectionIndex: number;
+  isActive?: boolean;
+}
+
+// Default navigation items
+export const navItems: NavItem[] = [
+  { id: 1, label: "Home", path: "#", sectionIndex: 0, isActive: true },
+  { id: 2, label: "Journey", path: "#journey", sectionIndex: 1 },
+  { id: 3, label: "Skills", path: "#skills", sectionIndex: 2 },
+  { id: 4, label: "Education", path: "#education", sectionIndex: 3 },
+  { id: 5, label: "Testimonials", path: "#testimonials", sectionIndex: 4 },
+  { id: 6, label: "Articles & News", path: "#articles", sectionIndex: 5 },
+  { id: 7, label: "Contact", path: "#contact", sectionIndex: 6 }
 ];
+
+// Helper function to get nav items with active state based on current section index
+export function getNavItemsWithActive(currentSectionIndex: number): NavItem[] {
+  return navItems.map(item => ({
+    ...item,
+    isActive: item.sectionIndex === currentSectionIndex
+  }));
+};
 
 // Skills
 export const services = [
