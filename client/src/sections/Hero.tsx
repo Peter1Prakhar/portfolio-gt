@@ -9,8 +9,8 @@ export default function Hero() {
   // Base background style - will be visible behind the portrait
   const heroStyles = {
     backgroundImage: `url('https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&q=80')`,
-    backgroundSize: '220%', // Make the background image much larger
-    backgroundPosition: '95% 25%', // Position almost all the way to the right
+    backgroundSize: '450%', // Make the background image extremely large like the reference
+    backgroundPosition: '90% 20%', // Position to match the reference image
     backgroundRepeat: 'no-repeat'
   };
 
@@ -27,7 +27,7 @@ export default function Hero() {
     <section className="h-screen relative overflow-hidden">
       {/* Base Background with Overlay */}
       <div className="absolute inset-0 bg-cover bg-center" style={heroStyles}>
-        <div className="absolute inset-0 bg-background bg-opacity-60"></div>
+        <div className="absolute inset-0 bg-background bg-opacity-40"></div>
       </div>
       
       {/* Portrait Image with Zoom Animation */}
