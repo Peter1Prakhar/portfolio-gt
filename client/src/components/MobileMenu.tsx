@@ -151,7 +151,7 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
         </motion.div>
         
         <motion.button 
-          className="absolute top-12 right-8 text-white focus:outline-none" 
+          className="absolute top-12 right-8 text-white focus:outline-none close-button" 
           onClick={onClose}
           aria-label="Close Navigation"
           initial={{ opacity: 0, rotate: -90 }}
@@ -171,6 +171,11 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
               delay: 0.2,
               ease: "easeInOut" 
             }
+          }}
+          whileHover={{ 
+            scale: 1.1, 
+            rotate: 90,
+            transition: { duration: 0.3 }
           }}
         >
           <X className="w-6 h-6" />
