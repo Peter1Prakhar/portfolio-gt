@@ -202,12 +202,10 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
                     onClose();
                   }}
                 >
-                  <span className="flex items-center">
-                    {item.isActive && (
-                      <span className="inline-block mr-3 w-3 h-3 rounded-full bg-accent shadow-[0_0_8px_rgba(255,0,0,0.8)] animate-pulse"></span>
-                    )}
-                    {item.label}
-                  </span>
+                  {item.isActive && (
+                    <span className="absolute left-[-25px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-accent shadow-[0_0_10px_rgba(255,0,0,0.8)] animate-pulse"></span>
+                  )}
+                  {item.label}
                 </a>
               </motion.li>
             ))}
