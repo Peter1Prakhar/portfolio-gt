@@ -7,6 +7,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hamburger Menu Styles */
+.hamburger-icon {
+  color: white;
+}
+
+.hamburger-line {
+  stroke: white;
+  transition: stroke 0.3s ease;
+}
+
+.active-line {
+  stroke: #FF0000; /* Using accent color for active line */
+  filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.7));
+}
+
 @layer base {
   :root {
     /* Base colors adjusted for the Gilber theme */

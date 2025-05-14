@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import MobileMenu from "./MobileMenu";
+import { useCurrentSection } from "./FullpageScroll";
 
 interface HeaderProps {
   isScrolled: boolean;
@@ -11,6 +12,16 @@ interface HeaderProps {
 export default function Header({ isScrolled, setIsSearchOpen }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const { currentIndex } = useCurrentSection();
+  
+  // Determine which hamburger line should be active based on the current section
+  const getActiveLineIndex = () => {
+    // Map section indices to hamburger line indices (0, 1, or 2)
+    // Spread active sections across the three lines
+    if (currentIndex < 3) return 0;       // First few sections activate top line
+    if (currentIndex >= 3 && currentIndex < 6) return 1;  // Middle sections activate middle line
+    return 2;  // Last sections activate bottom line
+  };
 
   useEffect(() => {
     // Prevent body scroll when mobile menu is open
@@ -43,7 +54,7 @@ export default function Header({ isScrolled, setIsSearchOpen }: HeaderProps) {
           
           {/* Hamburger Menu Toggle (Three Lines) */}
           <button 
-            className="text-white focus:outline-none mr-8" 
+            className="focus:outline-none mr-8" 
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Toggle Navigation"
           >
@@ -53,24 +64,28 @@ export default function Header({ isScrolled, setIsSearchOpen }: HeaderProps) {
               viewBox="0 0 24 24" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
+              className="hamburger-icon"
             >
               <path 
                 d="M3 6H21" 
                 stroke="currentColor" 
                 strokeWidth="2" 
                 strokeLinecap="round"
+                className={`hamburger-line ${getActiveLineIndex() === 0 ? 'active-line' : ''}`}
               />
               <path 
                 d="M3 12H21" 
                 stroke="currentColor" 
                 strokeWidth="2" 
                 strokeLinecap="round"
+                className={`hamburger-line ${getActiveLineIndex() === 1 ? 'active-line' : ''}`}
               />
               <path 
                 d="M3 18H21" 
                 stroke="currentColor" 
                 strokeWidth="2" 
                 strokeLinecap="round"
+                className={`hamburger-line ${getActiveLineIndex() === 2 ? 'active-line' : ''}`}
               />
             </svg>
           </button>
