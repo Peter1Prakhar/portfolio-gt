@@ -38,7 +38,7 @@ export default function Partners() {
   };
 
   return (
-    <section className="py-24 bg-secondary">
+    <section id="news" className="py-24 bg-secondary">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div 
           ref={ref}
