@@ -197,7 +197,8 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
                   }`}
                   onClick={(e) => {
                     e.preventDefault();
-                    setCurrentIndex(item.sectionIndex);
+                    // Just navigate to the hash, the hash change listener in FullpageScroll will handle the rest
+                    window.location.hash = item.path.slice(1); // Remove the # from the path
                     onClose();
                   }}
                 >

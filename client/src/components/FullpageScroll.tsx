@@ -1,5 +1,6 @@
 import { useState, useEffect, ReactNode, Children, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { navItems } from "../lib/data";
 
 interface FullpageScrollProps {
   children: ReactNode[];
@@ -77,6 +78,39 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
   const handleAnimationComplete = () => {
     setIsAnimating(false);
   };
+  
+  // Update URL hash when section changes
+  useEffect(() => {
+    if (currentIndex === 0) {
+      window.history.pushState(null, "", "#");
+    } else {
+      const sectionHash = navItems[currentIndex].path;
+      window.history.pushState(null, "", sectionHash);
+    }
+  }, [currentIndex]);
+  
+  // Listen for hash changes in the URL
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash || "#";
+      const matchingNavItem = navItems.find(item => item.path === hash);
+      
+      if (matchingNavItem && matchingNavItem.sectionIndex !== currentIndex) {
+        setPrevIndex(currentIndex);
+        setDirection(matchingNavItem.sectionIndex > currentIndex ? 1 : -1);
+        setCurrentIndex(matchingNavItem.sectionIndex);
+      }
+    };
+    
+    window.addEventListener("hashchange", handleHashChange);
+    
+    // Check hash on initial load
+    handleHashChange();
+    
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
   
   // Get all children as an array for accessing adjacent sections
   const childrenArray = Children.toArray(children);
