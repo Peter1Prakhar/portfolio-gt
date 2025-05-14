@@ -23,6 +23,9 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const numSections = Children.count(children);
   
+  // Get all children as an array for accessing adjacent sections
+  const childrenArray = Children.toArray(children);
+  
   // Handle wheel event for scrolling
   const handleWheel = (e: WheelEvent) => {
     // Prevent default scrolling
@@ -72,6 +75,8 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
   // Handle animation complete
   const handleAnimationComplete = () => {
     setIsAnimating(false);
+    // Reset direction after animation completes
+    setDirection(0);
   };
   
   // Update URL hash when section changes
@@ -106,50 +111,44 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
     };
   }, []);
   
-  // Get all children as an array for accessing adjacent sections
-  const childrenArray = Children.toArray(children);
-  
-  // Calculate which section to show in the sliding overlay based on direction
-  const getOverlaySection = () => {
-    if (direction === 1) {
-      // When scrolling down, show the previous section (which is sliding up)
-      return childrenArray[currentIndex - 1];
-    } else {
-      // When scrolling up, show the next section (which is sliding down)
-      return childrenArray[currentIndex + 1];
-    }
-  };
-  
   return (
     <CurrentSectionContext.Provider value={{ currentIndex, setCurrentIndex }}>
       <div className="h-screen overflow-hidden fixed inset-0 w-full">
-        {/* Background section (what's revealed underneath) */}
+        {/* Current section (always visible) */}
         <div className="absolute inset-0 w-full h-screen">
           {childrenArray[currentIndex]}
         </div>
         
-        {/* Animated overlay for sliding in/out sections */}
-        <AnimatePresence initial={false}>
-          {direction !== 0 && (
+        {/* Down animation - current page slides up */}
+        <AnimatePresence>
+          {direction === 1 && (
             <motion.div
-              key={`overlay-${direction}-${currentIndex}`}
-              className="absolute inset-0 w-full h-screen bg-background"
-              initial={{ 
-                y: direction === 1 ? "0%" : "-100%" 
-              }}
-              animate={{ 
-                y: direction === 1 ? "-100%" : "0%" 
-              }}
-              exit={{ 
-                y: direction === 1 ? "-200%" : "100%" 
-              }}
-              transition={{
-                duration: 0.9,
-                ease: [0.25, 1, 0.5, 1]
-              }}
+              key={`down-${currentIndex}`}
+              className="absolute inset-0 w-full h-screen bg-background z-10"
+              style={{ boxShadow: '0 -8px 30px rgba(255, 0, 0, 0.1)' }}
+              initial={{ y: 0 }}
+              animate={{ y: "-100%" }}
+              transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
               onAnimationComplete={handleAnimationComplete}
             >
-              {getOverlaySection()}
+              {childrenArray[currentIndex - 1]}
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        {/* Up animation - previous page slides down */}
+        <AnimatePresence>
+          {direction === -1 && (
+            <motion.div
+              key={`up-${currentIndex}`}
+              className="absolute inset-0 w-full h-screen bg-background z-10"
+              style={{ boxShadow: '0 8px 30px rgba(255, 0, 0, 0.1)' }}
+              initial={{ y: "-100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
+              onAnimationComplete={handleAnimationComplete}
+            >
+              {childrenArray[currentIndex + 1]}
             </motion.div>
           )}
         </AnimatePresence>
