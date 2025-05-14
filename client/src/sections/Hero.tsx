@@ -54,8 +54,8 @@ export default function Hero() {
       {/* Dark gradient overlay that covers bottom of the image */}
       <div className="absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-background to-transparent"></div>
       
-      {/* Minimalist Content - Positioned at bottom left */}
-      <div className="absolute bottom-20 left-20 z-10">
+      {/* Minimalist Content - Positioned higher at bottom left */}
+      <div className="absolute bottom-36 left-20 z-10">
         <motion.h1 
           className="text-6xl md:text-7xl font-poppins font-bold mb-4"
           initial={{ y: 20, opacity: 0 }}
@@ -66,7 +66,7 @@ export default function Hero() {
         </motion.h1>
         
         <motion.p 
-          className="text-base text-white/90 max-w-md"
+          className="text-base text-white/90 max-w-md mb-8"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.7 }}
@@ -74,6 +74,24 @@ export default function Hero() {
           Business Strategist & Data Scientist with expertise<br />
           in complex problem-solving across multiple industries.
         </motion.p>
+        
+        {/* Play Button */}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.9 }}
+          className="inline-block"
+        >
+          <button 
+            className="group relative flex items-center justify-center w-14 h-14 rounded-full border-2 border-accent hover:bg-accent/10 transition-all duration-300"
+            aria-label="Play Video"
+          >
+            <span className="block w-0 h-0 border-t-[8px] border-t-transparent border-l-[16px] border-l-accent border-b-[8px] border-b-transparent ml-1"></span>
+            
+            {/* Ripple effect */}
+            <span className="absolute inset-0 rounded-full border-2 border-accent animate-ping opacity-75"></span>
+          </button>
+        </motion.div>
       </div>
       
       {/* Copyright */}
