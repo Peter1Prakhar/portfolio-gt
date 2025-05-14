@@ -30,20 +30,19 @@ export default function Hero() {
         <div className="absolute inset-0 bg-background bg-opacity-70"></div>
       </div>
       
-      {/* Left Vertical Line */}
-      <div className="absolute left-12 top-0 bottom-0 w-[1px] bg-gray-700 opacity-50 z-10"></div>
-      
       {/* Social Icons */}
-      <div className="absolute left-12 top-1/4 h-48 flex flex-col justify-between z-10 -translate-x-1/2">
-        <a href="#" className="text-white hover:text-accent transition-colors duration-300">
+      <div className="fixed left-8 top-1/2 h-60 flex flex-col justify-between items-center z-10 -translate-y-1/2">
+        <div className="h-20 w-[1px] bg-gray-700 opacity-50 mb-6"></div>
+        <a href="#" className="text-white hover:text-accent transition-colors duration-300 mb-6">
           <Facebook className="w-5 h-5" />
         </a>
-        <a href="#" className="text-white hover:text-accent transition-colors duration-300">
+        <a href="#" className="text-white hover:text-accent transition-colors duration-300 mb-6">
           <Twitter className="w-5 h-5" />
         </a>
-        <a href="#" className="text-white hover:text-accent transition-colors duration-300">
+        <a href="#" className="text-white hover:text-accent transition-colors duration-300 mb-6">
           <Instagram className="w-5 h-5" />
         </a>
+        <div className="h-20 w-[1px] bg-gray-700 opacity-50"></div>
       </div>
       
       {/* Content */}

@@ -68,20 +68,6 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
       variants={menuVariants}
     >
       <div className="w-3/5 relative">
-        {/* Left content - keep the same content as the hero section */}
-        <div className="absolute left-12 top-0 bottom-0 w-[1px] bg-gray-700 opacity-50"></div>
-        
-        <div className="absolute left-12 top-1/4 h-48 flex flex-col justify-between -translate-x-1/2">
-          <a href="#" className="text-white hover:text-accent transition-colors duration-300">
-            <Facebook className="w-5 h-5" />
-          </a>
-          <a href="#" className="text-white hover:text-accent transition-colors duration-300">
-            <Twitter className="w-5 h-5" />
-          </a>
-          <a href="#" className="text-white hover:text-accent transition-colors duration-300">
-            <Instagram className="w-5 h-5" />
-          </a>
-        </div>
         
         <div className="ml-20 mt-12">
           <div className="text-xl font-poppins font-bold">
