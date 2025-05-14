@@ -110,13 +110,15 @@ export default function Contact() {
               variants={itemVariants} 
               className="text-3xl md:text-4xl font-poppins font-bold mb-6"
             >
-              LETS GET IN TOUCH!
+              Get In Touch
             </motion.h2>
             <motion.p 
               variants={itemVariants} 
               className="text-muted mb-8"
             >
-              I WOULD LOVE TO HEAR FROM YOU. Whether you have a business proposition, collaboration idea, or just want to connect, feel free to reach out.
+              Interested in discussing data science projects, business consulting opportunities, 
+              or academic collaborations? I'm open to connecting with professionals and 
+              organizations seeking expertise in these areas.
             </motion.p>
             
             <motion.div 

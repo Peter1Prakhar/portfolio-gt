@@ -224,9 +224,8 @@ export const navItems = [
   { id: 3, label: "Skills", path: "#skills" },
   { id: 4, label: "Testimonials", path: "#testimonials" },
   { id: 5, label: "Education", path: "#education" },
-  { id: 6, label: "Articles", path: "#articles" },
-  { id: 7, label: "News", path: "#news" },
-  { id: 8, label: "Contact", path: "#contact" }
+  { id: 6, label: "Articles & News", path: "#articles" },
+  { id: 7, label: "Contact", path: "#contact" }
 ];
 
 // Skills

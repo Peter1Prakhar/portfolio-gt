@@ -41,7 +41,7 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            Founder & Chief Executive Officer - GAMERS TAG
+            Business Strategist & Data Scientist
           </motion.p>
           
           <motion.h1 
@@ -59,7 +59,7 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            I'm a visionary entrepreneur with over four years of expertise in Product management, architecture, Marketing, Data analytics, Business development & Consulting, and Startups. Designed over 100 world-class products, setting new industry standards.
+            I combine business acumen with data science expertise to solve complex problems across finance, healthcare, and retail sectors. With over 10 years of experience in analytics, research, and education, I help organizations leverage data for strategic growth and innovation.
           </motion.p>
           
           <motion.div
@@ -70,8 +70,8 @@ export default function Hero() {
           >
             <div className="border-l-4 border-accent pl-4 mb-10">
               <p className="text-white/70 italic">
-                "The journey of a thousand miles begins<br />
-                with a single innovative step."
+                "Data without analysis is just numbers;<br />
+                analysis without insight is just statistics."
               </p>
               <p className="text-white mt-2">- Joshua Kanatt</p>
             </div>
