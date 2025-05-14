@@ -43,8 +43,6 @@ export default function Hero() {
         }}
       >
         <div className="relative w-[560px] h-[560px] md:w-[780px] md:h-[780px]">
-          <div className="absolute inset-0 rounded-full border-2 border-accent/20"></div>
-          <div className="absolute inset-0 rounded-full border-4 border-white/5"></div>
           <img 
             src={portraitImage} 
             alt="Joshua Kanatt" 
