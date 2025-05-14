@@ -10,7 +10,8 @@ export default function Hero() {
   const heroStyles = {
     backgroundImage: `url('https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&q=80')`,
     backgroundSize: 'cover',
-    backgroundPosition: 'center right'
+    backgroundPosition: '70% 30%', // Move to right and focus on upper body portion
+    backgroundRepeat: 'no-repeat'
   };
 
   // Trigger the zoom animation after component mounts
@@ -26,7 +27,7 @@ export default function Hero() {
     <section className="h-screen relative overflow-hidden">
       {/* Base Background with Overlay */}
       <div className="absolute inset-0 bg-cover bg-center" style={heroStyles}>
-        <div className="absolute inset-0 bg-background bg-opacity-90"></div>
+        <div className="absolute inset-0 bg-background bg-opacity-80"></div>
       </div>
       
       {/* Portrait Image with Zoom Animation */}
