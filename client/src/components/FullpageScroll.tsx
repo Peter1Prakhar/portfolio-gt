@@ -21,6 +21,7 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0); // 1 for down, -1 for up
   const [isAnimating, setIsAnimating] = useState(false);
+  const [previousIndex, setPreviousIndex] = useState(0); // Track the previous section index
   const numSections = Children.count(children);
   
   // Get all children as an array for accessing adjacent sections
@@ -35,11 +36,13 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
     
     if (e.deltaY > 0 && currentIndex < numSections - 1) {
       // Scrolling down
+      setPreviousIndex(currentIndex);
       setDirection(1);
       setIsAnimating(true);
       setCurrentIndex(prev => prev + 1);
     } else if (e.deltaY < 0 && currentIndex > 0) {
       // Scrolling up
+      setPreviousIndex(currentIndex);
       setDirection(-1);
       setIsAnimating(true);
       setCurrentIndex(prev => prev - 1);
@@ -51,10 +54,12 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
     if (isAnimating) return;
     
     if ((e.key === 'ArrowDown' || e.key === 'PageDown') && currentIndex < numSections - 1) {
+      setPreviousIndex(currentIndex);
       setDirection(1);
       setIsAnimating(true);
       setCurrentIndex(prev => prev + 1);
     } else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && currentIndex > 0) {
+      setPreviousIndex(currentIndex);
       setDirection(-1);
       setIsAnimating(true);
       setCurrentIndex(prev => prev - 1);
@@ -96,6 +101,7 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
       const matchingNavItem = navItems.find(item => item.path === hash);
       
       if (matchingNavItem && matchingNavItem.sectionIndex !== currentIndex) {
+        setPreviousIndex(currentIndex);
         setDirection(matchingNavItem.sectionIndex > currentIndex ? 1 : -1);
         setCurrentIndex(matchingNavItem.sectionIndex);
       }
@@ -114,41 +120,35 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
   return (
     <CurrentSectionContext.Provider value={{ currentIndex, setCurrentIndex }}>
       <div className="h-screen overflow-hidden fixed inset-0 w-full">
-        {/* Current section (always visible) */}
+        {/* Base Layer - Always show the current section */}
         <div className="absolute inset-0 w-full h-screen">
           {childrenArray[currentIndex]}
         </div>
         
-        {/* Down animation - current page slides up to reveal next page */}
-        <AnimatePresence>
-          {direction === 1 && (
+        {/* Animation Layer */}
+        <AnimatePresence mode="wait">
+          {direction !== 0 && (
             <motion.div
-              key={`down-${currentIndex}`}
+              key={direction === 1 ? `down-${previousIndex}` : `up-${previousIndex}`}
               className="absolute inset-0 w-full h-screen bg-background z-10"
-              style={{ boxShadow: '0 -8px 30px rgba(255, 0, 0, 0.1)' }}
-              initial={{ y: 0 }}
-              animate={{ y: "-100%" }}
-              transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
+              style={{ 
+                boxShadow: direction === 1 
+                  ? '0 -8px 30px rgba(255, 0, 0, 0.1)' 
+                  : '0 8px 30px rgba(255, 0, 0, 0.1)' 
+              }}
+              initial={{ 
+                y: direction === 1 ? 0 : "-100%" 
+              }}
+              animate={{ 
+                y: direction === 1 ? "-100%" : 0 
+              }}
+              transition={{ 
+                duration: 0.9, 
+                ease: [0.25, 1, 0.5, 1] 
+              }}
               onAnimationComplete={handleAnimationComplete}
             >
-              {childrenArray[currentIndex - 1]}
-            </motion.div>
-          )}
-        </AnimatePresence>
-        
-        {/* Up animation - previous page slides down to cover current page */}
-        <AnimatePresence>
-          {direction === -1 && (
-            <motion.div
-              key={`up-${currentIndex}`}
-              className="absolute inset-0 w-full h-screen bg-background z-10"
-              style={{ boxShadow: '0 8px 30px rgba(255, 0, 0, 0.1)' }}
-              initial={{ y: "-100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
-              onAnimationComplete={handleAnimationComplete}
-            >
-              {childrenArray[currentIndex - 1]}
+              {childrenArray[previousIndex]}
             </motion.div>
           )}
         </AnimatePresence>
@@ -173,6 +173,7 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
                   key={index}
                   onClick={() => {
                     if (!isAnimating && index !== currentIndex) {
+                      setPreviousIndex(currentIndex);
                       // Set direction based on target index
                       setDirection(index > currentIndex ? 1 : -1);
                       setIsAnimating(true);
