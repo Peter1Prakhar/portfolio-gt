@@ -34,7 +34,11 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
     },
     exit: { 
       opacity: 0,
-      transition: { duration: 0.5, delay: 0.2 } 
+      transition: { 
+        duration: 0.7, 
+        delay: 0.8, // Delay opacity fade until all sidebar elements and the panel have started to exit
+        ease: "easeInOut"
+      } 
     }
   };
 
@@ -54,7 +58,9 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
       x: "100%", 
       transition: { 
         duration: 0.6,
-        ease: "easeInOut" 
+        ease: "easeInOut",
+        // Delay the panel exit animation so content items can animate out first
+        delay: 0.5 
       } 
     }
   };
@@ -76,9 +82,10 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
       x: 50,
       opacity: 0,
       transition: {
-        delay: i * 0.05,
-        duration: 0.5,
-        ease: "easeOut"
+        // Create a delay that's proportional to the number of items, so last items animate out first
+        delay: 0.3 - (i * 0.1),
+        duration: 0.6,
+        ease: "easeInOut"
       },
     }),
   };
@@ -109,9 +116,23 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
         <motion.div 
           className="flex justify-center space-x-6 mb-12"
           initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: 50, opacity: 0 }}
-          transition={{ delay: 0.5, duration: 0.7 }}
+          animate={{ 
+            x: 0, 
+            opacity: 1,
+            transition: { 
+              delay: 0.5, 
+              duration: 0.7 
+            }
+          }}
+          exit={{ 
+            x: 50, 
+            opacity: 0,
+            transition: { 
+              duration: 0.6, 
+              delay: 0.2, // Exit with the close button
+              ease: "easeInOut" 
+            }
+          }}
         >
           <a href="#" className="text-accent font-medium text-sm">EN</a>
           <a href="#" className="text-white/70 hover:text-white font-medium text-sm">FR</a>
@@ -123,9 +144,23 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
           onClick={onClose}
           aria-label="Close Navigation"
           initial={{ opacity: 0, rotate: -90 }}
-          animate={{ opacity: 1, rotate: 0 }}
-          exit={{ opacity: 0, rotate: 90 }}
-          transition={{ duration: 0.6 }}
+          animate={{ 
+            opacity: 1, 
+            rotate: 0,
+            transition: { 
+              duration: 0.6, 
+              delay: 0.5 
+            }
+          }}
+          exit={{ 
+            opacity: 0, 
+            rotate: 90,
+            transition: { 
+              duration: 0.6, 
+              delay: 0.2,
+              ease: "easeInOut" 
+            }
+          }}
         >
           <X className="w-6 h-6" />
         </motion.button>
@@ -162,9 +197,20 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
         <motion.div 
           className="mt-auto flex flex-col items-center justify-center space-y-2 text-white/50 text-sm pt-6"
           initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: 50, opacity: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
+          animate={{ 
+            x: 0, 
+            opacity: 1,
+            transition: { delay: 0.7, duration: 0.8 }
+          }}
+          exit={{ 
+            x: 50, 
+            opacity: 0,
+            transition: { 
+              duration: 0.6, 
+              delay: 0.1, // Make footer disappear first before menu items
+              ease: "easeInOut" 
+            }
+          }}
         >
           <div className="flex space-x-6">
             <a href="#" className="hover:text-white/80 transition-colors">
