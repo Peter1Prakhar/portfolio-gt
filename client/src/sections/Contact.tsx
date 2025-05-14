@@ -14,6 +14,7 @@ export default function Contact() {
     name: "",
     email: "",
     subject: "",
+    linkedin: "",
     message: ""
   });
 
@@ -76,6 +77,7 @@ export default function Contact() {
         name: "",
         email: "",
         subject: "",
+        linkedin: "",
         message: ""
       });
     } catch (error) {
@@ -213,9 +215,19 @@ export default function Contact() {
                   type="text" 
                   name="subject"
                   placeholder="Mobile Number" 
-                  required
                   className="w-full bg-background text-white px-4 py-3 border-b border-muted focus:border-accent focus:outline-none transition-colors duration-300 bg-opacity-50"
                   value={formData.subject}
+                  onChange={handleInputChange}
+                />
+              </div>
+              
+              <div>
+                <input 
+                  type="text" 
+                  name="linkedin"
+                  placeholder="LinkedIn Profile" 
+                  className="w-full bg-background text-white px-4 py-3 border-b border-muted focus:border-accent focus:outline-none transition-colors duration-300 bg-opacity-50"
+                  value={formData.linkedin || ""}
                   onChange={handleInputChange}
                 />
               </div>
@@ -227,6 +239,7 @@ export default function Contact() {
                   placeholder="Message" 
                   required
                   className="w-full bg-background text-white px-4 py-3 border-b border-muted focus:border-accent focus:outline-none transition-colors duration-300 bg-opacity-50"
+                  style={{ minHeight: "100px" }}
                   value={formData.message}
                   onChange={handleInputChange}
                 ></textarea>
@@ -238,7 +251,7 @@ export default function Contact() {
                   className="inline-block px-8 py-3 bg-accent text-white font-medium hover:bg-opacity-90 transition-colors duration-300 rounded-full"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {isSubmitting ? "Sending..." : "Send"}
                 </button>
               </div>
             </motion.form>

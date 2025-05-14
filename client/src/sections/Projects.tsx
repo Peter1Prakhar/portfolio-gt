@@ -52,13 +52,13 @@ export default function Projects() {
             variants={itemVariants} 
             className="text-3xl md:text-4xl font-poppins font-bold mb-4"
           >
-            Latest Projects
+            My Skills
           </motion.h2>
           <motion.p 
             variants={itemVariants} 
             className="text-muted max-w-2xl mx-auto"
           >
-            Explore my recent work for clients spanning multiple industries and project types.
+            These are my core professional skills developed through years of education and real-world experience.
           </motion.p>
         </motion.div>
         
