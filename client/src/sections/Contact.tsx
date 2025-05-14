@@ -94,7 +94,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-24 bg-secondary">
+    <section id="contact" className="py-24 bg-secondary">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div 
           ref={ref}
@@ -108,13 +108,13 @@ export default function Contact() {
               variants={itemVariants} 
               className="text-3xl md:text-4xl font-poppins font-bold mb-6"
             >
-              Get In Touch
+              LETS GET IN TOUCH!
             </motion.h2>
             <motion.p 
               variants={itemVariants} 
               className="text-muted mb-8"
             >
-              I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+              I WOULD LOVE TO HEAR FROM YOU. Whether you have a business proposition, collaboration idea, or just want to connect, feel free to reach out.
             </motion.p>
             
             <motion.div 
@@ -188,7 +188,7 @@ export default function Contact() {
                   <input 
                     type="text" 
                     name="name"
-                    placeholder="Name" 
+                    placeholder="Name*" 
                     required
                     className="w-full bg-background text-white px-4 py-3 border-b border-muted focus:border-accent focus:outline-none transition-colors duration-300 bg-opacity-50"
                     value={formData.name}
@@ -199,7 +199,7 @@ export default function Contact() {
                   <input 
                     type="email" 
                     name="email"
-                    placeholder="Email" 
+                    placeholder="Email*" 
                     required
                     className="w-full bg-background text-white px-4 py-3 border-b border-muted focus:border-accent focus:outline-none transition-colors duration-300 bg-opacity-50"
                     value={formData.email}
@@ -212,7 +212,7 @@ export default function Contact() {
                 <input 
                   type="text" 
                   name="subject"
-                  placeholder="Subject" 
+                  placeholder="Mobile Number" 
                   required
                   className="w-full bg-background text-white px-4 py-3 border-b border-muted focus:border-accent focus:outline-none transition-colors duration-300 bg-opacity-50"
                   value={formData.subject}
