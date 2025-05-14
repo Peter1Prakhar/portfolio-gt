@@ -55,7 +55,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-background to-transparent"></div>
       
       {/* Minimalist Content - Positioned higher at bottom left */}
-      <div className="absolute bottom-36 left-20 z-10">
+      <div className="absolute bottom-36 left-40 z-10">
         {/* Play Button - Now above the name */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -96,7 +96,7 @@ export default function Hero() {
       
       {/* Copyright */}
       <motion.div
-        className="absolute bottom-5 left-20 text-xs text-white/50 z-10"
+        className="absolute bottom-5 left-40 text-xs text-white/50 z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 2 }}
