@@ -95,6 +95,9 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
           animate="center"
           exit="exit"
           className="absolute inset-0 w-full h-screen bg-background"
+          style={{
+            boxShadow: '0 -8px 30px rgba(255, 0, 0, 0.1)'
+          }}
           onAnimationComplete={handleAnimationComplete}
         >
           {/* Render only the current section without additional props */}
@@ -108,7 +111,7 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
       </AnimatePresence>
       
       {/* Navigation indicators */}
-      <div className="fixed right-10 top-1/2 transform -translate-y-1/2 z-50 flex flex-col space-y-3">
+      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col space-y-4">
         {Array.from({ length: numSections }).map((_, index) => (
           <button
             key={index}
@@ -118,8 +121,10 @@ export default function FullpageScroll({ children }: FullpageScrollProps) {
                 setCurrentIndex(index);
               }
             }}
-            className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-              index === currentIndex ? 'bg-accent' : 'bg-white/30'
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentIndex 
+                ? 'bg-accent w-4 h-4 shadow-[0_0_10px_rgba(255,0,0,0.7)]' 
+                : 'bg-white/30 hover:bg-white/50'
             }`}
             aria-label={`Go to section ${index + 1}`}
           />

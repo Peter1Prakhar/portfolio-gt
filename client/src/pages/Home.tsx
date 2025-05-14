@@ -17,31 +17,31 @@ export default function Home() {
       
       <FullpageScroll>
         {/* Each section becomes a full page with shutter animations */}
-        <div id="hero">
+        <div id="hero" className="h-screen w-full overflow-hidden">
           <Hero />
         </div>
         
-        <div id="journey">
+        <div id="journey" className="h-screen w-full overflow-hidden">
           <About />
         </div>
         
-        <div id="skills">
+        <div id="skills" className="h-screen w-full overflow-hidden">
           <Projects />
         </div>
         
-        <div id="education">
+        <div id="education" className="h-screen w-full overflow-hidden">
           <Education />
         </div>
         
-        <div id="testimonials">
+        <div id="testimonials" className="h-screen w-full overflow-hidden">
           <Testimonials />
         </div>
         
-        <div id="articles">
+        <div id="articles" className="h-screen w-full overflow-hidden">
           <Blog />
         </div>
         
-        <div id="contact">
+        <div id="contact" className="h-screen w-full overflow-hidden">
           <Contact />
         </div>
       </FullpageScroll>

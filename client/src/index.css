@@ -47,7 +47,11 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased overflow-hidden h-screen;
+  }
+
+  html {
+    @apply overflow-hidden h-screen;
   }
 
   /* Typography styles */
