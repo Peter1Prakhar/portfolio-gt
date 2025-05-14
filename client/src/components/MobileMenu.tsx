@@ -30,11 +30,11 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,
-      transition: { duration: 0.3 } 
+      transition: { duration: 0.7 } 
     },
     exit: { 
       opacity: 0,
-      transition: { duration: 0.3, delay: 0.1 } 
+      transition: { duration: 0.5, delay: 0.2 } 
     }
   };
 
@@ -45,14 +45,15 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
       x: "0%", 
       transition: { 
         type: "spring",
-        stiffness: 300,
-        damping: 30
+        stiffness: 100,
+        damping: 20,
+        duration: 0.8
       } 
     },
     exit: { 
       x: "100%", 
       transition: { 
-        duration: 0.3,
+        duration: 0.6,
         ease: "easeInOut" 
       } 
     }
@@ -64,18 +65,20 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
       x: 0,
       opacity: 1,
       transition: {
-        delay: i * 0.05 + 0.2, // Add extra delay so items come in after the sidebar
-        duration: 0.4,
+        delay: i * 0.1 + 0.3, // Slower sequential animation with longer delays
+        duration: 0.6,
         type: "spring",
-        stiffness: 250
+        stiffness: 100,
+        damping: 15
       },
     }),
     exit: (i: number) => ({
       x: 50,
       opacity: 0,
       transition: {
-        delay: i * 0.03,
-        duration: 0.3,
+        delay: i * 0.05,
+        duration: 0.5,
+        ease: "easeOut"
       },
     }),
   };
@@ -108,7 +111,7 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 50, opacity: 0 }}
-          transition={{ delay: 0.1, duration: 0.4 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
         >
           <a href="#" className="text-accent font-medium text-sm">EN</a>
           <a href="#" className="text-white/70 hover:text-white font-medium text-sm">FR</a>
@@ -122,7 +125,7 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
           initial={{ opacity: 0, rotate: -90 }}
           animate={{ opacity: 1, rotate: 0 }}
           exit={{ opacity: 0, rotate: 90 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.6 }}
         >
           <X className="w-6 h-6" />
         </motion.button>
@@ -159,7 +162,7 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 50, opacity: 0 }}
-          transition={{ delay: 0.5, duration: 0.4 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
         >
           <a href="#" className="hover:text-white/80 transition-colors">
             <Facebook className="w-4 h-4" />
@@ -179,7 +182,7 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           exit={{ scaleY: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.9 }}
         ></motion.div>
       </motion.div>
     </div>
