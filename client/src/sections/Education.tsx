@@ -62,13 +62,13 @@ export default function Education() {
               variants={itemVariants} 
               className="text-3xl md:text-4xl font-poppins font-bold mb-4"
             >
-              Education & Experience
+              Education Journey
             </motion.h2>
             <motion.p 
               variants={itemVariants} 
               className="text-muted max-w-2xl mx-auto"
             >
-              My academic background and professional journey that has shaped my expertise.
+              My academic pursuits and credentials that have shaped my expertise in business, data science, and technology.
             </motion.p>
           </motion.div>
           

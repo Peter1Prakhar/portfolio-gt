@@ -52,13 +52,13 @@ export default function Testimonials() {
             variants={itemVariants} 
             className="text-3xl md:text-4xl font-poppins font-bold mb-4"
           >
-            Client Testimonials
+            Testimonials
           </motion.h2>
           <motion.p 
             variants={itemVariants} 
             className="text-muted max-w-2xl mx-auto"
           >
-            What clients say about working with me on their design projects.
+            Feedback from industry professionals and collaborators about my work and expertise.
           </motion.p>
         </motion.div>
         

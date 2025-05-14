@@ -52,13 +52,13 @@ export default function Blog() {
             variants={itemVariants} 
             className="text-3xl md:text-4xl font-poppins font-bold mb-4"
           >
-            Latest Articles
+            Articles & News
           </motion.h2>
           <motion.p 
             variants={itemVariants} 
             className="text-muted max-w-2xl mx-auto"
           >
-            Insights and thoughts on design, technology, and creative processes.
+            My research publications, insights on data science, and business technology trends.
           </motion.p>
         </motion.div>
         
