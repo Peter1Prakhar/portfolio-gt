@@ -59,13 +59,23 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { x: 50, opacity: 0 },
     visible: (i: number) => ({
-      y: 0,
+      x: 0,
       opacity: 1,
       transition: {
-        delay: i * 0.05,
-        duration: 0.5,
+        delay: i * 0.05 + 0.2, // Add extra delay so items come in after the sidebar
+        duration: 0.4,
+        type: "spring",
+        stiffness: 250
+      },
+    }),
+    exit: (i: number) => ({
+      x: 50,
+      opacity: 0,
+      transition: {
+        delay: i * 0.03,
+        duration: 0.3,
       },
     }),
   };
@@ -93,19 +103,29 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
         variants={rightPanelVariants}
       >
         {/* Language selector */}
-        <div className="flex justify-end space-x-6 mb-12 mr-10">
+        <motion.div 
+          className="flex justify-end space-x-6 mb-12 mr-10"
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: 50, opacity: 0 }}
+          transition={{ delay: 0.1, duration: 0.4 }}
+        >
           <a href="#" className="text-accent font-medium text-sm">EN</a>
           <a href="#" className="text-white/70 hover:text-white font-medium text-sm">FR</a>
           <a href="#" className="text-white/70 hover:text-white font-medium text-sm">DE</a>
-        </div>
+        </motion.div>
         
-        <button 
+        <motion.button 
           className="absolute top-12 right-8 text-white focus:outline-none" 
           onClick={onClose}
           aria-label="Close Navigation"
+          initial={{ opacity: 0, rotate: -90 }}
+          animate={{ opacity: 1, rotate: 0 }}
+          exit={{ opacity: 0, rotate: 90 }}
+          transition={{ duration: 0.3 }}
         >
           <X className="w-6 h-6" />
-        </button>
+        </motion.button>
         
         {/* Navigation items */}
         <nav className="flex-1 pr-12">
@@ -116,6 +136,7 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
                 custom={i}
                 initial="hidden"
                 animate="visible"
+                exit="exit"
                 variants={itemVariants}
               >
                 <a 
@@ -133,7 +154,13 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
         </nav>
         
         {/* Bottom info */}
-        <div className="mt-auto flex items-center space-x-4 text-white/50 text-sm pt-6">
+        <motion.div 
+          className="mt-auto flex items-center space-x-4 text-white/50 text-sm pt-6"
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: 50, opacity: 0 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
+        >
           <a href="#" className="hover:text-white/80 transition-colors">
             <Facebook className="w-4 h-4" />
           </a>
@@ -144,10 +171,16 @@ export default function MobileMenu({ isOpen, onClose, onSearchOpen }: MobileMenu
             <Instagram className="w-4 h-4" />
           </a>
           <span className="text-xs ml-4">© {currentYear} COPYRIGHT.<br/>ALL RIGHTS RESERVED.</span>
-        </div>
+        </motion.div>
         
         {/* Right red line */}
-        <div className="absolute right-12 top-0 bottom-0 w-[1px] bg-accent"></div>
+        <motion.div 
+          className="absolute right-12 top-0 bottom-0 w-[1px] bg-accent"
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          exit={{ scaleY: 0 }}
+          transition={{ duration: 0.5 }}
+        ></motion.div>
       </motion.div>
     </div>
   );
